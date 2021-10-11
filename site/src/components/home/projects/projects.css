@@ -1,0 +1,238 @@
+.projects {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.projects .section-divider {
+    box-shadow: 0 -30px 30px -30px rgba(0, 0, 0, 0.5) inset;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.projects .section-divider p {
+    margin: 0 auto;
+    padding: 40px 0;
+    color: var(--color-background);
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.projects .content {
+    background-color: var(--color-foreground);
+    margin: 0;
+    padding: 0;
+}
+
+.sticky-header-projects {
+	margin: 0;
+	padding: 6px 0 0 0;
+	text-align: center;
+}
+.sticky-header-projects p {
+	color: transparent;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
+
+.projects ul {
+    text-align: center;
+    margin: 20px 0 0 0;
+    padding: 0 9%;
+}
+
+.projects ul.collapse {
+    display: none;
+}
+
+.projects ul li {
+    border-radius: 12px;
+    display: inline-block;
+    margin: 40px;
+    text-align: left;
+    vertical-align: top;
+    width: 300px;
+}
+.projects ul li .project-header {
+    background-color: var(--color-background);
+    border-radius: 12px 12px 0 0;
+    margin: 0 0 4px 0;
+    padding: 0;
+}
+
+.projects ul li .project-title {
+    color: white;
+    display: inline-block;
+    font-weight: bolder;
+    font-size: 16px;
+    margin: 6px 0 8px 10px;
+    padding: 0;
+}
+.projects ul li .project-lang {
+    box-shadow: 3px -3px 2px 0 lightgray inset;
+    border: 0 solid lightgray;
+    border-width: 1px 1px 0 0;
+    border-radius: 0 12px 0 8px;
+    /* color: gray; */
+    background-color: white;
+    float: right;
+    font-size: 11px;
+    margin: 0;
+    padding: 6px 6px 7px 7px;
+}
+
+.projects ul li .project-content {
+    background: url('../../../images/project-bg-triangulation.png') no-repeat center/cover;
+    border: 1px solid lightgray;
+    border-radius: 0 0 12px 12px;
+    cursor: pointer;
+    /* position: relative; */
+    height: 260px;
+    overflow: hidden;
+}
+
+.projects ul li .project-description {
+    background-image: linear-gradient(white, rgba(255, 255, 255, 0));
+    font-size: 12px;
+    margin: 0;
+    padding: 2px 4px;
+}
+
+.projects ul li .project-arrow {
+    background: url('../../../images/arrow_r@2x.png') no-repeat right/40px 40px;
+    bottom: 0;
+    height: 40px;
+    margin: 6px;
+    position: absolute;
+    right: 0;
+    width: 80px;
+}
+
+.projects ul li .project-arrow p {
+    color: white;
+    display: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-shadow: 0 0 4px black;
+}
+
+.projects ul li .project-content:hover {
+    box-shadow: 0 0 8px 0 lightgray;
+}
+.projects ul li .project-content:hover .project-arrow {
+    background: url('../../../images/arrow_r_shadow@2x.png') no-repeat right/40px 40px;
+}
+.projects ul li .project-content:hover .project-arrow p {
+    display: block;
+}
+
+.project-selected.collapse {
+    display: none;   
+}
+.project-selected {
+    margin: 0;
+    padding: 20px;
+    text-align: center;;
+}
+
+.project-selected-header {
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+}
+
+.project-selected .back {
+    background: url('../../../images/arrow_thin_l@2x.png') no-repeat left/10px 14px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    padding-left: 14px;
+    text-decoration: underline;
+    text-align: left;
+    width: 180px;
+}
+.project-selected .back b {
+    margin: 0;
+    padding: 0;
+}
+
+.project-selected .title {
+    font-size: 26px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.project-selected-header .next-container {
+    background: url('../../../images/arrow_thin_r@2x.png') no-repeat right top 4px/10px 14px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    padding-right: 14px;
+    text-align: right;
+    width: 180px;
+}
+.project-selected .next {
+    font-size: 18px;
+    margin: 0;
+    text-decoration: underline;
+}
+.project-selected .next-container .subtitle {
+    font-size: 14px;
+    font-weight: lighter;
+    margin: 0;
+}
+
+/* .project-selected-container {
+    background-color: var(--color-background);
+    box-shadow: 0 0 8px 4px black inset;
+    padding:  0 30px 30px 30px;
+} */
+
+.project-selected-mode-toggle {
+    box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.5) inset;
+    background-color: lightgray;
+    border-radius: 6px;
+    display: inline-block;
+    margin: 12px 0;
+    overflow: hidden;
+    padding: 0;
+}
+.project-selected-mode-toggle p {
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 2px;
+    padding: 0 4px;
+}
+.project-selected-mode-toggle p:first-child {
+    margin: 2px 0 2px 2px;
+}
+.project-selected-mode-toggle p:hover {
+    text-decoration: underline;
+}
+
+.project-selected-mode-toggle p.selected {
+    background-color: darkgray;
+    box-shadow: 0 0 4px 0 black;
+    color: var(--color-background);
+    cursor: default;
+}
+.project-selected-mode-toggle p.selected:hover {
+    text-decoration: none;
+}
+
+.project-selected-frame {
+    box-shadow: 0 0 8px 0px black;
+    background-color: var(--color-foreground);
+    margin: 0;
+    padding: 0;
+}

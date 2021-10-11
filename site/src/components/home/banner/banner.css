@@ -1,0 +1,47 @@
+.banner {
+    /* background: url("../../../images/profile_cover2@2x.jpg") no-repeat top center/cover; */
+/* background-attachment: fixed; */
+    /* box-shadow: 0 -30px 30px -30px rgba(0, 0, 0, 0.5) inset, 0 30px 30px -30px rgba(0, 0, 0, 0.5) inset; */
+/* background-color: lightgray; */
+    display: block;
+    /* background-image: linear-gradient(var(--color-foreground) , var(--color-background)); */
+    height: 370px;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+}
+
+.banner p {
+    display: inline-block;
+    color: var(--color-accent);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 2px 9px 2px;
+    vertical-align: bottom;
+}
+.banner .title {
+    display: inline-block;
+    font-size: 30px;
+    font-weight: normal;
+    color: var(--color-background);
+    margin: 0 6px 0 0;
+    padding: 0 0 6px 0;
+}
+.banner .prefix {
+    margin: 0 6px 0 3%;
+    text-align: right;
+}
+.banner .suffix {
+    margin: 0;
+    text-align: left;
+}
+
+.banner .name {
+    border-top: 2px solid var(--color-background);
+    display: block;
+    font-size: 54px;
+    color: var(--color-background);
+    margin: 0 auto;
+    padding: 0;
+    width: 400px;
+}
