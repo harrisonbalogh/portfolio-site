@@ -1,17 +1,16 @@
-// import '../../stylesheets/Header.css'
 import './projects.css'
 import React from 'react';
-// import projectTestPath from '../../../project_markdown/test-project-1/readme.md';
-// import ReactMarkdown from 'react-markdown';
+import projectData from '../../../project_markdown/info.json';
+import ReactMarkdown from 'react-markdown';
 
 class Projects extends React.Component {
   constructor(props) {
     super(props)
     this.state = {     
-      projectSelected: undefined,
+      projectSelectedIndex: undefined,
       interactiveMode: false,
       windowHeight: window.innerHeight,
-      markdownTest: ''
+      projects: projectData.projects
     }
   }
 
@@ -19,16 +18,6 @@ class Projects extends React.Component {
     window.addEventListener('resize', () => this.handleResize());
     // To pick up divider render height
     this.handleResize()
-
-    // fetch(projectTestPath)
-    //   .then(response => {
-    //     return response.text()
-    //   })
-    //   .then(text => {
-    //     this.setState({
-    //       markdownTest: text
-    //     })
-    //   })
   }
 
   handleResize() {
@@ -36,153 +25,107 @@ class Projects extends React.Component {
     this.setState({windowHeight: h});
   }
 
-  handleProjectSelect(p) {
-    this.setState({projectSelected: p})
+  handleProjectSelected(i) {
+    if (i >= this.state.projects.length) return 
+    this.setState({projectSelectedIndex: i})
     window.scrollTo(0, this.content.offsetTop + this.divider.offsetHeight)
   }
 
   handleBack() {
-    this.setState({projectSelected: undefined})
+    this.setState({projectSelectedIndex: undefined})
+  }
+
+  getProjectIndexByName(name) {
+    return this.state.projects.findIndex(p => p.name === name)
   }
 
   handleInteractiveModeToggle() {
     this.setState({interactiveMode: !this.state.interactiveMode})
   }
 
-  projectSelectedContent(interactive) {
-    if (interactive) {
-      return (
-        <iframe/>
-      )
-    }
+  projectListItem(i) {
+    let project = this.state.projects[i]
     return (
-      <div>
-        
+      <li key={project.name} onClick={() => this.handleProjectSelected(i)}>
+        <div className='project-header'>
+          <p className='project-title'>{project.name || ''}</p>
+          <p className='project-lang'>{project.lang || ''}</p>
+        </div>
+        <div className='project-content'>
+          <p className='project-description'>{(project.description || '').substring(0, 120) + "..."}</p>
+          <div className='project-arrow'>
+            <p>VIEW</p>
+          </div>
+        </div>
+      </li>
+    );
+  }
+
+  projectList() {
+    let { projectSelectedIndex, windowHeight, projects } = this.state;
+    if (projectSelectedIndex !== undefined) return null
+    return (
+      <ul>
+        {projects.map((_, i) => this.projectListItem(i))}
+      </ul>
+    )
+  }
+
+  projectSelectedContent() {
+    let { windowHeight, projectSelectedIndex, projects, interactiveMode } = this.state;
+    let projectSelected = projectSelectedIndex !== undefined ? projects[projectSelectedIndex] : undefined
+    if (projectSelected === undefined) return null
+
+    let nextProject = projects[(projectSelectedIndex + 1) % projects.length]
+    return (
+      <div className='project-selected'>
+        <div className='project-selected-header'>
+
+          <p onClick={()=>this.handleBack()} className='back'>Back to <b>Projects</b></p>
+
+          <p className='title'>{projectSelected.name}</p>
+
+          <div className='next-container' onClick={() => this.handleProjectSelected(this.getProjectIndexByName(nextProject.name))}>
+            <p className='next'>Next Project</p>
+            <p className='subtitle'>{nextProject.name}</p>
+          </div>
+
+        </div>
+
+        <a className='project-selected-link' href={projectSelected.link}>{projectSelected.link || ''}</a>
+
+        <div onClick={()=>this.handleInteractiveModeToggle()} className='project-selected-mode-toggle'>
+          <p className={!interactiveMode ? '' : 'selected'}>Embedded</p>
+          <p className={interactiveMode ? '' : 'selected'}>Readme</p>
+        </div>
+        <div className='project-selected-frame'>
+          {
+            interactiveMode 
+            ? <iframe title={projectSelected.name} src={`harxer.com/projects/${projectSelected.name}`} className='project-selected-iframe' style={{height: `${windowHeight - 156}px`}}/>
+            : <div className='project-selected-markdown-container'>
+                <ReactMarkdown className='project-selected-markdown' children={projectSelected.readme} />
+              </div>
+          }
+        </div>
       </div>
     )
   }
 
   render() {
-    let { projectSelected, interactiveMode, windowHeight } = this.state;
+    console.log(this.state.windowHeight)
     return (
       <div className="projects" ref={element => this.content = element}>
-        {/* <ReactMarkdown children={markdownTest} /> */}
         <div className="section-divider" ref={element => this.divider = element}>
           <p>Projects</p>
         </div>
-          
-        <div className="content ">
-          <div className='sticky-header-projects'>
+        <div className="content " style={{minHeight: `${this.state.windowHeight}px`}}>
+          {/* <div className='sticky-header-projects'>
             <p><i>Select a project...</i></p>
-          </div>
+          </div> */}
 
-          <ul className={projectSelected ? 'collapse' : ''} style={{minHeight: `${windowHeight - 43}px`}}>
-            <li onClick={() => this.handleProjectSelect(5)}>
-              <div className='project-header'>
-                <p className='project-title'>Unreal Testing</p>
-                <p className='project-lang'>UE4</p>
-              </div>
-              <div className='project-content'>
-                <p className='project-description'>
-                  Testing in unreal engine. Testing in unreal engine. Testing in unreal engine. 
-                  Testing in unreal engine. Testing in unreal engine. Testing in unreal engine.
-                </p>
-                <div className='project-arrow'>
-                  <p>View</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className='project-header'>
-                <p className='project-title'>Triangulation</p>
-                <p className='project-lang'>Javascript | CSS</p>
-              </div>
-              
-              <div className='project-content'>
-                <p className='project-description'>
-                  Testing in unreal engine.
-                </p>
-                <div className='project-arrow'>
-                  <p>View</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className='project-header'>
-                <p className='project-title'>Work it</p>
-                <p className='project-lang'>Java</p>
-              </div>
-              <div className='project-content'>
-                <p className='project-description'>
-                  Testing in unreal engine. sdf sdf sdf s a  Testing in unreal engine. Testing in unreal engine.
-                </p>
-                <div className='project-arrow'>
-                  <p>View</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className='project-header'>
-                <p className='project-title'>Something here</p>
-                <p className='project-lang'>Javascript</p>
-              </div>
-              <div className='project-content'>
-                <p className='project-description'>
-                  Testing in unreal engine. as asdf sdf sdf a Testing in unreal engine. Testing in unreal engine.
-                </p>
-                <div className='project-arrow'>
-                  <p>View</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className='project-header'>
-                <p className='project-title'>Another One Here</p>
-                <p className='project-lang'>Java</p>
-              </div>
-              <div className='project-content'>
-                <p className='project-description'>
-                  Testing in unreal engine. a af sdf Testing in unreal engine. Testing in unreal engine.
-                </p>
-                <div className='project-arrow'>
-                  <p>View</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className='project-header'>
-                <p className='project-title'>Test This Here</p>
-                <p className='project-lang'>Javascript | Python</p>
-              </div>
-              <div className='project-content'>
-                <p className='project-description'>
-                  Testing in unreal engine. Testing in unreal engine. Testing in unreal engine.
-                </p>
-                <div className='project-arrow'>
-                  <p>View</p>
-                </div>
-              </div>
-            </li>
-          </ul>
+          {this.projectList()}
 
-          <div className={projectSelected ? 'project-selected' : 'project-selected collapse'}>
-            <div className='project-selected-header'>
-              <p onClick={()=>this.handleBack()} className='back'>Back to <b>Projects</b></p>
-              <p className='title'>Triangulation</p>
-              <div className='next-container'>
-                <p className='next'>Next Project</p>
-                <p className='subtitle'>Unreal Engine</p>
-              </div>
-            </div>
-
-            <div onClick={()=>this.handleInteractiveModeToggle()} className='project-selected-mode-toggle'>
-              <p className={!interactiveMode ? '' : 'selected'}>Interactive</p>
-              <p className={interactiveMode ? '' : 'selected'}>Demo</p>
-            </div>
-            <div className='project-selected-frame' style={{height: `${windowHeight - 149}px`}}>
-              {this.projectSelectedContent(interactiveMode)}
-            </div>
-          </div>
+          {this.projectSelectedContent()}
         </div>
       </div>
     );

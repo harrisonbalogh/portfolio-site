@@ -21,11 +21,13 @@
 
 .projects .content {
     background-color: var(--color-foreground);
+    display: block;
     margin: 0;
     padding: 0;
 }
 
 .sticky-header-projects {
+    display: none;
 	margin: 0;
 	padding: 6px 0 0 0;
 	text-align: center;
@@ -39,16 +41,13 @@
 
 .projects ul {
     text-align: center;
-    margin: 20px 0 0 0;
-    padding: 0 9%;
-}
-
-.projects ul.collapse {
-    display: none;
+    margin: 0;
+    padding: 20px 9% 0 9%;
 }
 
 .projects ul li {
     border-radius: 12px;
+    cursor: pointer;
     display: inline-block;
     margin: 40px;
     text-align: left;
@@ -56,14 +55,17 @@
     width: 300px;
 }
 .projects ul li .project-header {
-    background-color: var(--color-background);
+    /* background-color: var(--color-background); */
+    border: 1px solid lightgray;
+    border-width: 1px 1px 0 1px;
     border-radius: 12px 12px 0 0;
-    margin: 0 0 4px 0;
+    margin: 0 0 0 0;
+    overflow: hidden;
     padding: 0;
 }
 
 .projects ul li .project-title {
-    color: white;
+    /* color: white; */
     display: inline-block;
     font-weight: bolder;
     font-size: 16px;
@@ -71,10 +73,10 @@
     padding: 0;
 }
 .projects ul li .project-lang {
-    box-shadow: 3px -3px 2px 0 lightgray inset;
+    box-shadow: 3px -3px 6px 0 lightgray inset;
     border: 0 solid lightgray;
-    border-width: 1px 1px 0 0;
-    border-radius: 0 12px 0 8px;
+    border-width: 0;
+    border-radius: 0 0 0 8px;
     /* color: gray; */
     background-color: white;
     float: right;
@@ -85,29 +87,29 @@
 
 .projects ul li .project-content {
     background: url('../../../images/project-bg-triangulation.png') no-repeat center/cover;
+    /* box-shadow: 0 0 6px 0 lightgray; */
     border: 1px solid lightgray;
     border-radius: 0 0 12px 12px;
-    cursor: pointer;
     /* position: relative; */
     height: 260px;
     overflow: hidden;
+    position: relative;
 }
 
 .projects ul li .project-description {
     background-image: linear-gradient(white, rgba(255, 255, 255, 0));
     font-size: 12px;
     margin: 0;
-    padding: 2px 4px;
+    padding: 2px 10px;
 }
 
 .projects ul li .project-arrow {
-    background: url('../../../images/arrow_r@2x.png') no-repeat right/40px 40px;
     bottom: 0;
     height: 40px;
     margin: 6px;
     position: absolute;
     right: 0;
-    width: 80px;
+    width: 86px;
 }
 
 .projects ul li .project-arrow p {
@@ -119,19 +121,16 @@
     text-shadow: 0 0 4px black;
 }
 
-.projects ul li .project-content:hover {
+.projects ul li:hover {
     box-shadow: 0 0 8px 0 lightgray;
 }
-.projects ul li .project-content:hover .project-arrow {
+.projects ul li:hover .project-arrow {
     background: url('../../../images/arrow_r_shadow@2x.png') no-repeat right/40px 40px;
 }
-.projects ul li .project-content:hover .project-arrow p {
+.projects ul li:hover .project-arrow p {
     display: block;
 }
 
-.project-selected.collapse {
-    display: none;   
-}
 .project-selected {
     margin: 0;
     padding: 20px;
@@ -141,7 +140,7 @@
 .project-selected-header {
     display: flex;
     align-items: flex-start;
-    margin: 0;
+    margin: 10px 0 0 0;
     padding: 0;
 }
 
@@ -156,6 +155,7 @@
     text-align: left;
     width: 180px;
 }
+
 .project-selected .back b {
     margin: 0;
     padding: 0;
@@ -171,6 +171,7 @@
     background: url('../../../images/arrow_thin_r@2x.png') no-repeat right top 4px/10px 14px;
     cursor: pointer;
     margin: 0;
+    overflow: hidden;
     padding: 0;
     padding-right: 14px;
     text-align: right;
@@ -181,24 +182,37 @@
     margin: 0;
     text-decoration: underline;
 }
+.project-selected .next-container .subtitle::selection, 
+.project-selected .next::selection {
+    background: none;
+}
 .project-selected .next-container .subtitle {
     font-size: 14px;
     font-weight: lighter;
     margin: 0;
 }
 
-/* .project-selected-container {
-    background-color: var(--color-background);
-    box-shadow: 0 0 8px 4px black inset;
-    padding:  0 30px 30px 30px;
-} */
+.project-selected-link,
+.project-selected-link:link,
+.project-selected-link:visited {
+    color: gray;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+.project-selected-link:hover {
+    text-decoration: underline;
+}
 
 .project-selected-mode-toggle {
     box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.5) inset;
     background-color: lightgray;
     border-radius: 6px;
     display: inline-block;
-    margin: 12px 0;
+    margin: 14px 0 2px 0;
     overflow: hidden;
     padding: 0;
 }
@@ -212,6 +226,10 @@
     display: inline-block;
     margin: 2px;
     padding: 0 4px;
+}
+.project-selected-mode-toggle::selection,
+.project-selected-mode-toggle p::selection {
+    background: none;
 }
 .project-selected-mode-toggle p:first-child {
     margin: 2px 0 2px 2px;
@@ -231,8 +249,43 @@
 }
 
 .project-selected-frame {
-    box-shadow: 0 0 8px 0px black;
     background-color: var(--color-foreground);
-    margin: 0;
+    margin: 0 auto;
+    padding: 10px 0 0 0;
+}
+
+.project-selected-markdown-container {
+    /* box-shadow: 0 0 8px 0px black; */
+    /* border: 1px solid lightgray; */
+    height: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: 800px;
     padding: 0;
+}
+
+/* .project-selected-markdown-container p a {
+
+} */
+
+.project-selected-markdown {
+    color: var(--color-background);
+    margin: 0 auto;
+    padding: 10px;
+    padding-left: 25px;
+    text-align: left;
+    width: 100%;
+}
+
+.project-selected-iframe {
+    /* background-color: var(--color-background); */
+    border-width: 0;
+    /* border: 1px solid lightgray; */
+    box-shadow: 0 0 4px 0px gray;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
 }
