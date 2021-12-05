@@ -7,10 +7,8 @@ class Projects extends React.Component {
   constructor(props) {
     super(props)
     this.state = {     
-      projectSelectedIndex: undefined,
       interactiveMode: false,
       windowHeight: window.innerHeight,
-      projects: projectData.projects
     }
   }
 
@@ -21,22 +19,22 @@ class Projects extends React.Component {
   }
 
   handleResize() {
-    let h = window.innerHeight - 38; // 38 is header height
+    let h = window.innerHeight - 40; // 40 is header height
     this.setState({windowHeight: h});
   }
 
   handleProjectSelected(i) {
-    if (i >= this.state.projects.length) return 
-    this.setState({projectSelectedIndex: i})
+    if (i >= projectData.projects.length) return 
     window.scrollTo(0, this.content.offsetTop + this.divider.offsetHeight)
+    this.props.onProjectSelected(i);
   }
 
   handleBack() {
-    this.setState({projectSelectedIndex: undefined})
+    this.props.onProjectSelected(undefined);
   }
 
   getProjectIndexByName(name) {
-    return this.state.projects.findIndex(p => p.name === name)
+    return projectData.projects.findIndex(p => p.name === name)
   }
 
   handleInteractiveModeToggle() {
@@ -44,7 +42,7 @@ class Projects extends React.Component {
   }
 
   projectListItem(i) {
-    let project = this.state.projects[i]
+    let project = projectData.projects[i]
     return (
       <li key={project.name} onClick={() => this.handleProjectSelected(i)}>
         <div className='project-header'>
@@ -62,21 +60,24 @@ class Projects extends React.Component {
   }
 
   projectList() {
-    let { projectSelectedIndex, windowHeight, projects } = this.state;
-    if (projectSelectedIndex !== undefined) return null
+    let { windowHeight } = this.state;
+    let { iProjectSelected } = this.props;
+    if (iProjectSelected !== undefined) return null
     return (
       <ul>
-        {projects.map((_, i) => this.projectListItem(i))}
+        {projectData.projects.map((_, i) => this.projectListItem(i))}
       </ul>
     )
   }
 
   projectSelectedContent() {
-    let { windowHeight, projectSelectedIndex, projects, interactiveMode } = this.state;
-    let projectSelected = projectSelectedIndex !== undefined ? projects[projectSelectedIndex] : undefined
+    let { windowHeight, interactiveMode } = this.state;
+    let { iProjectSelected } = this.props;
+    let projects = projectData.projects;
+    let projectSelected = iProjectSelected !== undefined ? projects[iProjectSelected] : undefined
     if (projectSelected === undefined) return null
 
-    let nextProject = projects[(projectSelectedIndex + 1) % projects.length]
+    let nextProject = projects[(iProjectSelected + 1) % projects.length]
     return (
       <div className='project-selected'>
         <div className='project-selected-header'>
@@ -92,11 +93,11 @@ class Projects extends React.Component {
 
         </div>
 
-        <a className='project-selected-link' href={projectSelected.link}>{projectSelected.link || ''}</a>
+        <a className='project-selected-link' href={projectSelected.link} target="_blank" rel="noopener noreferrer">{projectSelected.link || ''}</a>
 
         <div onClick={()=>this.handleInteractiveModeToggle()} className='project-selected-mode-toggle'>
-          <p className={!interactiveMode ? '' : 'selected'}>Embedded</p>
-          <p className={interactiveMode ? '' : 'selected'}>Readme</p>
+          <p className={!interactiveMode ? '' : 'selected'}>Demo</p>
+          <p className={interactiveMode ? '' : 'selected'}>Description</p>
         </div>
         <div className='project-selected-frame'>
           {

@@ -4,6 +4,14 @@ import Content from './home/Content';
 import React from 'react';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleProjectSelected = this.handleProjectSelected.bind(this);
+    this.state = {     
+      iProjectSelected: undefined
+    }
+  }
+
   componentDidMount() {
     window.addEventListener('resize', () => this.handleResize());
     this.handleResize()
@@ -11,6 +19,10 @@ export default class App extends React.Component {
 
   handleResize() {
     this.forceUpdate()
+  }
+
+  handleProjectSelected(i) {
+    this.setState({iProjectSelected: i})
   }
 
   render() {
@@ -27,8 +39,16 @@ export default class App extends React.Component {
 
     return (
       <div id="app">
-        <Header contentSections={contentSections}/>
-        <Content ref={element => this.content = element}/>
+        <Header 
+          contentSections={contentSections} 
+          onProjectSelected={this.handleProjectSelected}
+          iProjectSelected={this.state.iProjectSelected}
+        />
+        <Content 
+          ref={element => this.content = element} 
+          onProjectSelected={this.handleProjectSelected}
+          iProjectSelected={this.state.iProjectSelected}
+        />
       </div>
     );
   }

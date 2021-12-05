@@ -1,9 +1,10 @@
 import './header.css'
 import React from 'react';
 import { Sections } from '../../javascript/constants';
+import projectData from '../../project_markdown/info.json'
 import PropTypes from 'prop-types';
 
-const navHeight = 38;
+const navHeight = 40;
 const stickyHeight = 30;
 
 class Header extends React.Component {
@@ -62,7 +63,10 @@ class Header extends React.Component {
 
   handleNavSelection(section) {
     let heightTotal = 0;
-    if (section === 2) section = 3
+    if (section === 2) {
+      section = 3
+      this.props.onProjectSelected(undefined);
+    }
     for (let s = 0; s < section; s++) {
       heightTotal += this.props.contentSections[s]
     }
@@ -75,7 +79,20 @@ class Header extends React.Component {
         <p onClick={()=>this.handleNavSelection(0)} className="home" ref={p => {if (!hightlight) this.buttonHome = p}}>HB</p>
         <p onClick={()=>this.handleNavSelection(1)} ref={p => {if (!hightlight) this.buttonAbout = p}}>About</p>
         <p onClick={()=>this.handleNavSelection(2)} ref={p => {if (!hightlight) this.buttonProjects = p}}>Projects</p>
+        {this.selectedProjectHeaderButton(hightlight)}
       </React.Fragment>
+    )
+  }
+
+  /**
+   * Conditionally displays selected project header button.
+   */
+  selectedProjectHeaderButton(hightlight) {
+    return (this.props.iProjectSelected && !hightlight ? 
+      <p onClick={()=>this.handleNavSelection(3)} className='header-button-selected-project' >
+        {`${projectData.projects[this.props.iProjectSelected].name}`}
+      </p> 
+      : undefined
     )
   }
 
@@ -125,7 +142,8 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-  contentSections: PropTypes.arrayOf(PropTypes.number)
+  contentSections: PropTypes.arrayOf(PropTypes.number),
+  iProjectSelected: PropTypes.number
 }
 
 export default Header;
