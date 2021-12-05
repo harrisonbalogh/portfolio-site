@@ -1,5 +1,3 @@
  #!/bin/bash
 
-npm install
-npm run build
-cp -a ./build/. /var/www/staging
+# Client is always rebuilt after a project deploy
