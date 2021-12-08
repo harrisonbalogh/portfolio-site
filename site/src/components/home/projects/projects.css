@@ -86,7 +86,7 @@
 }
 
 .projects ul li .project-content {
-    background: url('../../../images/project-bg-triangulation.png') no-repeat center/cover;
+    background: no-repeat center/cover;
     /* box-shadow: 0 0 6px 0 lightgray; */
     border: 1px solid lightgray;
     border-radius: 0 0 12px 12px;
