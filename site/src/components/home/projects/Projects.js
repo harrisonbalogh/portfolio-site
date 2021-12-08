@@ -27,6 +27,7 @@ class Projects extends React.Component {
     if (i >= projectData.projects.length) return 
     window.scrollTo(0, this.content.offsetTop + this.divider.offsetHeight)
     this.props.onProjectSelected(i);
+    this.setState({interactiveMode: false})
   }
 
   handleBack() {
@@ -95,10 +96,14 @@ class Projects extends React.Component {
 
         <a className='project-selected-link' href={projectSelected.link} target="_blank" rel="noopener noreferrer">{projectSelected.link || ''}</a>
 
-        <div onClick={()=>this.handleInteractiveModeToggle()} className='project-selected-mode-toggle'>
-          <p className={!interactiveMode ? '' : 'selected'}>Demo</p>
-          <p className={interactiveMode ? '' : 'selected'}>Description</p>
-        </div>
+        {
+          projectSelected.interactive ?
+          <div onClick={()=>this.handleInteractiveModeToggle()} className='project-selected-mode-toggle'>
+            <p className={!interactiveMode ? '' : 'selected'}>Demo</p>
+            <p className={interactiveMode ? '' : 'selected'}>Description</p>
+          </div>
+          : null
+        }
         <div className='project-selected-frame'>
           {
             interactiveMode 
