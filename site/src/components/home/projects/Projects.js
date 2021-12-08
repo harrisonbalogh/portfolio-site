@@ -44,14 +44,19 @@ class Projects extends React.Component {
 
   projectListItem(i) {
     let project = projectData.projects[i]
-    let backgroundImageUrl = `url(${require(`../../../project_markdown/${project.name}-icon.png`).default})`
+    let backgroundImage = ''
+    try {
+      backgroundImage = require(`../../../project_markdown/${project.name}-icon.png`)
+      backgroundImage = backgroundImage.default
+    } catch(error) {}
+    
     return (
       <li key={project.name} onClick={() => this.handleProjectSelected(i)}>
         <div className='project-header'>
           <p className='project-title'>{project.name || ''}</p>
           <p className='project-lang'>{project.lang || ''}</p>
         </div>
-        <div className='project-content' style={{backgroundImage: backgroundImageUrl}}>
+        <div className='project-content' style={{backgroundImage: `url(${backgroundImage})`}}>
           <p className='project-description'>{(project.description || '').substring(0, 120) + "..."}</p>
           <div className='project-arrow'>
             <p>VIEW</p>
