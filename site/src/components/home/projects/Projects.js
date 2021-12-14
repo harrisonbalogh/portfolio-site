@@ -2,6 +2,8 @@ import './projects.css'
 import React from 'react';
 import projectData from '../../../project_markdown/info.json';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 
 class Projects extends React.Component {
   constructor(props) {
@@ -67,7 +69,6 @@ class Projects extends React.Component {
   }
 
   projectList() {
-    let { windowHeight } = this.state;
     let { iProjectSelected } = this.props;
     if (iProjectSelected !== undefined) return null
     return (
@@ -115,7 +116,12 @@ class Projects extends React.Component {
             interactiveMode 
             ? <iframe title={projectSelected.name} src={`https://harxer.com/projects/${projectSelected.name}`} className='project-selected-iframe' style={{height: `${windowHeight - 156}px`}}/>
             : <div className='project-selected-markdown-container'>
-                <ReactMarkdown className='project-selected-markdown' children={projectSelected.readme} />
+                <ReactMarkdown className='project-selected-markdown' 
+                components={{
+                  img: ({node, ...props}) => <img src={props.src} alt={props.alt} width="500" />
+                }}
+                rehypePlugins={[rehypeRaw, remarkGfm]}
+                children={projectSelected.readme}/>
               </div>
           }
         </div>
