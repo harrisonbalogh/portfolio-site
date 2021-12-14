@@ -50,16 +50,6 @@
 .about--profile-links .github div:hover {
 	background: url("../../../images/icon_github_alt@2x.png") no-repeat center/cover;
 }
-.about--profile-links .facebook div {
-	cursor: pointer;
-	background: url("../../../images/icon_facebook@2x.png") no-repeat center/cover;
-	display: block;
-	height: 45px;
-	width: 45px;
-}
-.about--profile-links .facebook div:hover {
-	background: url("../../../images/icon_facebook_alt@2x.png") no-repeat center/cover;
-}
 .about--profile-links .linkedin div {
 	cursor: pointer;
 	background: url("../../../images/icon_linkedin@2x.png") no-repeat center/cover;
@@ -188,7 +178,7 @@
 	/* min-height: 40px; */
 	padding: 0;
 	text-align: left;
-	/* width: 100%; */
+	width: 100%;
 	max-width: 726px;
 }
 
@@ -198,16 +188,17 @@
 	margin: 0;
 	padding: 0;
 	text-align: left;
+  width: 15%;
 }
 
 .about--content-section-lang-title {
+  border-bottom: 1px solid gray;
 	font-size: 14px;
 	font-weight: bold;
 	margin: 0;
 	padding: 0;
 }
 .about--content-section-lang-count {
-	border-top: 1px solid gray;
 	display: inline-block;
 	font-size: 12px;
 	font-weight: lighter;
