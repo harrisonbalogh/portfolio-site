@@ -88,7 +88,7 @@ class Header extends React.Component {
    * Conditionally displays selected project header button.
    */
   selectedProjectHeaderButton(hightlight) {
-    return (this.props.iProjectSelected && !hightlight ? 
+    return (this.props.iProjectSelected !== undefined && !hightlight ? 
       <p onClick={()=>this.handleNavSelection(3)} className='header-button-selected-project' >
         {`${projectData.projects[this.props.iProjectSelected].name}`}
       </p> 
