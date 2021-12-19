@@ -1,8 +1,10 @@
 # HarxerWebClient
 
+## React site
 
-## Dev
+Showcasing project portfolio.
+
+## Local Dev
 
 `npm install`
-
 `npm start`
