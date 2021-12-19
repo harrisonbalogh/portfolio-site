@@ -114,7 +114,7 @@ class Projects extends React.Component {
         <div className='project-selected-frame'>
           {
             interactiveMode 
-            ? <iframe title={projectSelected.name} src={`https://harxer.com/projects/${projectSelected.name}`} className='project-selected-iframe' style={{height: `${windowHeight - 156}px`}}/>
+            ? <iframe title={projectSelected.name} src={`https://harrisonbalogh.com/projects/${projectSelected.name}`} className='project-selected-iframe' style={{height: `${windowHeight - 156}px`}}/>
             : <div className='project-selected-markdown-container'>
                 <ReactMarkdown className='project-selected-markdown' 
                 components={{
