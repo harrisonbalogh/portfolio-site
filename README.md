@@ -15,7 +15,5 @@ to serve staticly through Nginx. See project setup in video below...
 ## Local Dev
 
 `npm install`
+
 `npm start`
-
-## Older site versions
-
