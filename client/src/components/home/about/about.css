@@ -94,7 +94,7 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	width: 460px;
+	width: 340px;
 }
 #about--navigator-icons li {
 	cursor: pointer;
@@ -142,7 +142,7 @@
 .about--content-section-icon {
 	display: inline-block;
 	height: 24px;
-	margin: 0;
+	margin: 0 5px 0 0;
 	padding: 0;
 	vertical-align: top;
 	width: 30px;
@@ -165,17 +165,16 @@
 	display: inline-block;
 	font-weight: bold;
 	font-size: 18px;
-	margin: 1px 0 0 0;
+  line-height: 24px;
+	margin: 0 0 0 0;
 	padding: 0;
 }
 
 .about--content-section-lang {
-	/* background: url(../../../images/loader_beat_white@2x.gif) no-repeat center/contain; */
 	border-spacing: 10px;
-	display: table;
+	/* display: table; */
 	list-style: none;
 	margin: 0 20px 40px 54px;
-	/* min-height: 40px; */
 	padding: 0;
 	text-align: left;
 	width: 100%;
@@ -183,16 +182,19 @@
 }
 
 .about--content-section-lang li {
-	cursor: default;
-	display: table-cell;
-	margin: 0;
+	/* cursor: default; */
+	display: inline-block;
+	margin: 0 30px 0 0;
 	padding: 0;
-	text-align: left;
-  width: 15%;
+	/* text-align: left; */
+  /* width: 50px; */
+}
+.about--content-section-lang li:nth-child(even) p {
+	font-weight: normal;
 }
 
 .about--content-section-lang-title {
-  border-bottom: 1px solid gray;
+  /* border-bottom: 1px solid gray; */
 	font-size: 14px;
 	font-weight: bold;
 	margin: 0;
@@ -237,19 +239,4 @@
 	display: inline-block;
 	margin: 0;
 	padding: 0;
-}
-
-.about--content-tool-list {
-	display: inline-block;
-	list-style: none;
-}
-.about--content-tool-list li {
-	display: inline-block;
-	font-size: 12px;
-	border-right: 1px solid var(--color-background);
-	margin-right: 4px;
-	padding-right: 4px;
-}
-.about--content-tool-list li:nth-child(even) {
-	color: gray;
 }

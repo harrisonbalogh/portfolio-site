@@ -14,11 +14,10 @@ class About extends React.Component {
               <li className="linkedin"><a href="https://www.linkedin.com/in/harrison-balogh-5907a8117/" target=""><div></div></a></li>
             </ul>
             <p className="about--content-bio">
-              University taught software engineer with experience developing and deploying
-              full-stack web applications. Big data processing for large populations. Supporting
-              and maintaining software for medical systems. Worked with numerous graphic libraries
-              including: Swing/AWT, ThreeJS, SFML, Cocoa, Unity, Unreal, Godot, SpriteKit.
-              Experience with hardware integration on ROS for LIDAR research. This website presents some of the many personal projects I've worked on over the years.
+              Software engineer (Ba.Sc) with industry experience developing and deploying full-stack web applications for medical
+              applications. Big data ETL processing of large medical datasets. Developed for embedded systems in aviation industry
+              and university LIDAR research projects. Worked with numerous graphic libraries including: Swing, ThreeJS, SFML, Cocoa, Unity, 
+              Unreal, Godot, SpriteKit. This website presents some of the many personal projects I've worked on over the years.
             </p>
   
             <div className="about--navigator">
@@ -27,7 +26,6 @@ class About extends React.Component {
                 <li id="about--navigator-icon-lang"></li>
                 <li id="about--navigator-icon-work"></li>
                 <li id="about--navigator-icon-educ"></li>
-                <li id="about--navigator-icon-tool"></li>
               </ul>
               <div id="about--navigator-line-right"></div>
             </div>
@@ -39,19 +37,18 @@ class About extends React.Component {
             <ul className="about--content-section-lang" id="about--content-section-lang-content">
               <li>
                 <p className="about--content-section-lang-title">Java</p>
-                <p className="about--content-section-lang-count">See projects below...</p>
               </li>
               <li>
                 <p className="about--content-section-lang-title">Swift</p>
-                <p className="about--content-section-lang-count">See projects below...</p>
               </li>
               <li>
                 <p className="about--content-section-lang-title">JavaScript</p>
-                <p className="about--content-section-lang-count">See projects below...</p>
+              </li>
+              <li>
+                <p className="about--content-section-lang-title">Node</p>
               </li>
               <li>
                 <p className="about--content-section-lang-title">React</p>
-                <p className="about--content-section-lang-count">See projects below...</p>
               </li>
               <li>
                 <p className="about--content-section-lang-title">C#</p>
@@ -59,13 +56,23 @@ class About extends React.Component {
               <li>
                 <p className="about--content-section-lang-title">Python</p>
               </li>
+              <li>
+                <p className="about--content-section-lang-title">Ruby</p>
+              </li>
+              <li>
+                <p className="about--content-section-lang-title">Rails</p>
+              </li>
             </ul>
   
             <div className="about--content-section" id="about--content-section-work">
               <div className="about--content-section-icon icon-work"></div>
               <p className="about--content-section-title">Developer Experience</p>
             </div>
-            <p className="about-content-section-work-header"><b>Software Engineer II</b> - Cerner Corporation  <i>Mar. 2019 - Present</i></p>
+            <p className="about-content-section-work-header"><b>Software Engineer III</b> - Boeing  <i>May 2022 - Present</i></p>
+            <p className="about-content-section-work-description">
+              Developing embedded commercial airplane software.
+            </p>
+            <p className="about-content-section-work-header"><b>Software Engineer II</b> - Cerner Corporation  <i>Mar. 2019 - Apr. 2022</i></p>
             <p className="about-content-section-work-description">
               Contributed to large data processing ETL pipelines; high-traffic web-based medical applications including microservices in Java and 
               Ruby on Rails with UI contributions built in React and proprietary in-house libraries; DevOps including deployments to live client zones, 
@@ -99,19 +106,6 @@ class About extends React.Component {
               <p className="educ-title">Computer Sience (B.S.)</p>
               <p className="educ-sub">Cal State Long Beach, College of Engineering <i>2018</i></p>
             </div>
-  
-            <div className="about--content-section"  id="about--content-section-tool">
-              <div className="about--content-section-icon icon-tool"></div>
-              <p className="about--content-section-title">Tools and Workflow</p>
-            </div>
-            <ul className="about--content-tool-list">
-              <li>Photoshop CS6</li><li>Maya</li><li>Blender</li><li>NodeJS</li>
-              <li>SpriteKit</li><li>Unity</li><li>Unreal Engine</li><li>Godot</li><li>GSAP Tween</li>
-              <li>JIRA</li><li>WordPress</li><li>Wix</li><li>Git</li><li>MySQL</li>
-              <li>MongoDB</li><li>Xcode</li><li>Eclipse</li><li>Visual Studio</li>
-              <li>Atom</li><li>NetBeans</li><li>Dreamweaver</li><li>Mac</li>
-              <li>Windows</li><li>Ubuntu</li><li>iOS</li><li>Apache Suite</li>
-            </ul>
           </div>
       </div>
     );

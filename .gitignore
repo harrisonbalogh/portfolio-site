@@ -1,17 +1,19 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/site/node_modules
-/site/.pnp
+*/node_modules
+*/package-lock.json
+*/yarn.lock
+/client/.pnp
 .pnp.js
 
 # testing
-/site/coverage
+/client/coverage
 
 # production
-/site/build
+/client/build
 
-/site/src/project_markdown/*
+/client/src/project_markdown/*
 
 # misc
 .DS_Store
