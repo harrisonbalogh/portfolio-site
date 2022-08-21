@@ -25,9 +25,12 @@ export default class Banner extends React.Component {
       <div className="banner" ref={element => this.content = element}
         style={{height: `${bannerHeight/2 + 50}px`, paddingTop: `${bannerHeight/2 - 50}px`}}
       >
-          <p className="prefix">A</p>
-          <h1 ref={element => this.titleLabel = element} className="title">Software Engineer</h1>
-          <p className="suffix">Portfolio</p>
+          <div id="banner-title">
+            <p className="prefix">A</p>
+            <h1 ref={element => this.titleLabel = element} className="title">Software Engineer</h1>
+            <p className="suffix">Portfolio</p>
+          </div>
+
           <h1 className="name">Harrison Balogh</h1>
       </div>
     );

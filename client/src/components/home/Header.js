@@ -7,6 +7,12 @@ import PropTypes from 'prop-types';
 const navHeight = 40;
 const stickyHeight = 30;
 
+const HEADER_BUTTONS = [
+  'HB',
+  'About',
+  'Projects'
+]
+
 class Header extends React.Component {
   constructor(props) {
     super(props)
@@ -15,17 +21,10 @@ class Header extends React.Component {
       headerButtonWidths: [],
       stickyHeaderDisplacement: navHeight
     }
+    this.navButtonMap = {}
   }
 
   componentDidMount() {
-    this.setState({
-      headerButtonWidths: [
-        this.buttonHome.clientWidth,
-        this.buttonAbout.clientWidth,
-        this.buttonProjects.clientWidth,
-        this.buttonProjects.clientWidth
-      ]
-    })
     document.addEventListener('scroll', () => this.handleScroll())
   }
 
@@ -36,28 +35,32 @@ class Header extends React.Component {
       focusedTabIndex: this.state.focusedTabIndex
     }
     let heightTotal = 0
-    for (let s = 0; s < this.props.contentSections.length; s++) {
-      heightTotal += this.props.contentSections[s]
-      // Check section
-      if (window.scrollY < heightTotal) {
-        if (this.state.focusedTabIndex !== s) {
-          newState['focusedTabIndex'] = s
-          updateState = true
-        }
-        // Check displacement (unless on last section)
-        if (s !== this.props.contentSections.length - 1 && (heightTotal - stickyHeight) < window.scrollY) { // 30 is sticky header height
-            newState['stickyHeaderDisplacement'] = navHeight - (window.scrollY - (heightTotal - stickyHeight))
-            updateState = true
-        } else if (this.state.stickyHeaderDisplacement !== navHeight) {
-          newState['stickyHeaderDisplacement'] = navHeight
-          updateState = true
-        }
+    let sectionIndex = 0
+    for (let s = 0; s < this.props.sectionHeights.length; s++) {
+      heightTotal += this.props.sectionHeights[s]
+      if (window.scrollY < heightTotal) break
+      sectionIndex++
+    }
 
-        if (updateState) {
-          this.setState(newState)
-        }
-        return
-      }
+    // Check section
+    if (this.state.focusedTabIndex !== sectionIndex) {
+      newState['focusedTabIndex'] = sectionIndex
+      updateState = true
+
+      Object.keys(this.navButtonMap).forEach(i => (this.navButtonMap[i].className = ""))
+      this.navButtonMap[Math.min(sectionIndex, Object.keys(this.navButtonMap).length - 1)].className = "focused"
+    }
+    // Check displacement (unless on last section)
+    if (sectionIndex !== this.props.sectionHeights.length - 1 && (heightTotal - stickyHeight) < window.scrollY) { // 30 is sticky header height
+        newState['stickyHeaderDisplacement'] = navHeight - (window.scrollY - (heightTotal - stickyHeight))
+        updateState = true
+    } else if (this.state.stickyHeaderDisplacement !== navHeight) {
+      newState['stickyHeaderDisplacement'] = navHeight
+      updateState = true
+    }
+
+    if (updateState) {
+      this.setState(newState)
     }
   }
 
@@ -68,30 +71,29 @@ class Header extends React.Component {
       this.props.onProjectSelected(undefined);
     }
     for (let s = 0; s < section; s++) {
-      heightTotal += this.props.contentSections[s]
+      heightTotal += this.props.sectionHeights[s]
     }
     window.scrollTo(0, heightTotal)
   }
 
-  headerButtons(hightlight = false) {
-    return(
-      <React.Fragment>
-        <p onClick={()=>this.handleNavSelection(0)} className="home" ref={p => {if (!hightlight) this.buttonHome = p}}>HB</p>
-        <p onClick={()=>this.handleNavSelection(1)} ref={p => {if (!hightlight) this.buttonAbout = p}}>About</p>
-        <p onClick={()=>this.handleNavSelection(2)} ref={p => {if (!hightlight) this.buttonProjects = p}}>Projects</p>
-        {this.selectedProjectHeaderButton(hightlight)}
-      </React.Fragment>
-    )
+  navButtons() {
+    return HEADER_BUTTONS.map((name, i) => {
+      let className = i ? '' : 'focused'
+      return <p key={i} onClick={()=>this.handleNavSelection(i)} className={className} ref={p => (this.navButtonMap[i] = p)}>
+        {name}
+      </p>
+    })
   }
 
   /**
    * Conditionally displays selected project header button.
    */
-  selectedProjectHeaderButton(hightlight) {
-    return (this.props.iProjectSelected !== undefined && !hightlight ? 
-      <p onClick={()=>this.handleNavSelection(3)} className='header-button-selected-project' >
+  selectedProjectHeaderButton(highlight) {
+    let className = `header-button-selected-project ${highlight ? 'highlight' : ''}`
+    return (this.props.iProjectSelected !== undefined ?
+      <p onClick={()=>this.handleNavSelection(3)} className={className}>
         {`${projectData.projects[this.props.iProjectSelected].name}`}
-      </p> 
+      </p>
       : undefined
     )
   }
@@ -115,18 +117,12 @@ class Header extends React.Component {
   render() {
     const { focusedTabIndex, headerButtonWidths, stickyHeaderDisplacement} = this.state;
     let stickyHeaderOffset = `${stickyHeaderDisplacement}px`
-    const clipWidth = headerButtonWidths[focusedTabIndex]
-    const clipX = headerButtonWidths.slice(0, Math.min(focusedTabIndex, 2)).reduce((x, current) => x + current, 0)
-    const clipX2 = clipX + clipWidth
 
     return (
       <div className="header" ref={element => this.content = element}>
         <div className="nav">
-          {this.headerButtons()}
-        </div>
-        <div className="nav-highlight" id='nav-highlight' 
-          style={{ clipPath: `polygon(${clipX}px 0, ${clipX2}px 0,  ${clipX2}px var(--nav-height), ${clipX}px var(--nav-height))`}}>
-          {this.headerButtons(true)}
+          {this.navButtons()}
+          {this.selectedProjectHeaderButton(focusedTabIndex >= 3)}
         </div>
         <div className={this.headerStickyClassName(focusedTabIndex)} style={{marginTop: stickyHeaderOffset}}>
           {this.headerStickyContent(focusedTabIndex)}
@@ -138,11 +134,11 @@ class Header extends React.Component {
 }
 
 Header.defaultProps = {
-  contentSections: []
+  sectionHeights: []
 }
 
 Header.propTypes = {
-  contentSections: PropTypes.arrayOf(PropTypes.number),
+  sectionHeights: PropTypes.arrayOf(PropTypes.number),
   iProjectSelected: PropTypes.number
 }
 

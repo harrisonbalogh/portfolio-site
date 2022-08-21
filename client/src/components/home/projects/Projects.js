@@ -8,7 +8,7 @@ import remarkGfm from 'remark-gfm'
 class Projects extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {     
+    this.state = {
       interactiveMode: false,
       windowHeight: window.innerHeight,
     }
@@ -26,7 +26,7 @@ class Projects extends React.Component {
   }
 
   handleProjectSelected(i) {
-    if (i >= projectData.projects.length) return 
+    if (i >= projectData.projects.length) return
     window.scrollTo(0, this.content.offsetTop + this.divider.offsetHeight)
     this.props.onProjectSelected(i);
     this.setState({interactiveMode: false})
@@ -51,7 +51,7 @@ class Projects extends React.Component {
       backgroundImage = require(`../../../project_markdown/${project.name}-icon.png`)
       backgroundImage = backgroundImage.default
     } catch(error) {}
-    
+
     return (
       <li key={project.name} onClick={() => this.handleProjectSelected(i)}>
         <div className='project-header'>
@@ -113,10 +113,10 @@ class Projects extends React.Component {
         }
         <div className='project-selected-frame'>
           {
-            interactiveMode 
+            interactiveMode
             ? <iframe title={projectSelected.name} src={`https://harrisonbalogh.com/projects/${projectSelected.name}`} className='project-selected-iframe' style={{height: `${windowHeight - 156}px`}}/>
             : <div className='project-selected-markdown-container'>
-                <ReactMarkdown className='project-selected-markdown' 
+                <ReactMarkdown className='project-selected-markdown'
                 components={{
                   img: ({node, ...props}) => <img src={props.src} alt={props.alt} width="500" />
                 }}

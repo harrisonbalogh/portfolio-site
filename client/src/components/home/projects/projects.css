@@ -42,7 +42,7 @@
 .projects ul {
     text-align: center;
     margin: 0;
-    padding: 20px 9% 0 9%;
+    padding: 20px 0;
 }
 
 .projects ul li {
@@ -59,7 +59,7 @@
     border: 1px solid lightgray;
     border-width: 1px 1px 0 1px;
     border-radius: 12px 12px 0 0;
-    margin: 0 0 0 0;
+    margin: 0;
     overflow: hidden;
     padding: 0;
 }
@@ -182,7 +182,7 @@
     margin: 0;
     text-decoration: underline;
 }
-.project-selected .next-container .subtitle::selection, 
+.project-selected .next-container .subtitle::selection,
 .project-selected .next::selection {
     background: none;
 }
@@ -256,7 +256,8 @@
 
 .project-selected-markdown-container {
     /* box-shadow: 0 0 8px 0px black; */
-    /* border: 1px solid lightgray; */
+    border-radius: 8px;
+    border: 1px solid lightgray;
     height: 100%;
     margin: 0 auto;
     overflow-x: hidden;

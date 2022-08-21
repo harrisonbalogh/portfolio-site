@@ -7,7 +7,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.handleProjectSelected = this.handleProjectSelected.bind(this);
-    this.state = {     
+    this.state = {
       iProjectSelected: undefined
     }
   }
@@ -26,10 +26,10 @@ export default class App extends React.Component {
   }
 
   render() {
-    let contentSections = []
+    let sectionHeights = []
     if (this.content !== undefined) {
       // clientHeight does not include margins or borders
-      contentSections = [
+      sectionHeights = [
         this.content.banner.content.clientHeight,
         this.content.about.content.clientHeight,
         this.content.projects.divider.clientHeight,
@@ -39,13 +39,13 @@ export default class App extends React.Component {
 
     return (
       <div id="app">
-        <Header 
-          contentSections={contentSections} 
+        <Header
+          sectionHeights={sectionHeights}
           onProjectSelected={this.handleProjectSelected}
           iProjectSelected={this.state.iProjectSelected}
         />
-        <Content 
-          ref={element => this.content = element} 
+        <Content
+          ref={element => this.content = element}
           onProjectSelected={this.handleProjectSelected}
           iProjectSelected={this.state.iProjectSelected}
         />

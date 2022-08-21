@@ -6,33 +6,39 @@
     display: block;
     /* background-image: linear-gradient(var(--color-foreground) , var(--color-background)); */
     height: 370px;
-    padding: 0;
+    padding: 0 20px;
     text-align: center;
-    margin: 0;
+    margin: 0 auto;
+    max-width: 390px;
 }
 
-.banner p {
-    display: inline-block;
-    color: var(--color-accent);
-    font-size: 16px;
-    font-weight: bold;
-    padding: 0 2px 9px 2px;
-    vertical-align: bottom;
+#banner-title {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
-.banner .title {
-    display: inline-block;
-    font-size: 30px;
-    font-weight: normal;
-    color: var(--color-background);
-    margin: 0 6px 0 0;
-    padding: 0 0 6px 0;
+#banner-title h1 {
+  flex: none;
+  margin: 0;
+
+  font-size: 30px;
+  font-weight: normal;
+  color: var(--color-background);
 }
+#banner-title p {
+  flex: 1;
+  margin: 3px 6px;
+  padding: 0;
+
+  color: var(--color-accent);
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .banner .prefix {
-    margin: 0 6px 0 3%;
     text-align: right;
 }
 .banner .suffix {
-    margin: 0;
     text-align: left;
 }
 
@@ -43,5 +49,4 @@
     color: var(--color-background);
     margin: 0 auto;
     padding: 0;
-    width: 400px;
 }

@@ -11,12 +11,20 @@
 }
 
 .header div {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+
   display: block;
   height: var(--nav-height);
   margin: 0;
+  overflow-x: auto;
   padding: 0;
   position: fixed;
+  white-space: nowrap;
   width: 100%;
+}
+.header div::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
 }
 
 .header p {
@@ -33,20 +41,17 @@
   padding: 0;
   z-index: 1;
 }
-.header .nav p, .header .nav-highlight p {
+.header .nav p {
+  border-radius: 12px 12px 0 0;
   border-top: 1px solid var(--color-background);
   cursor: pointer;
   padding: 11px 40px;
 }
-.header .nav-highlight {
-  color: var(--color-background);
-  z-index: 1;
-}
-.header .nav-highlight p {
-  border-radius: 12px 12px 0 0;
+.header .nav p.focused {
   background-color: var(--color-foreground);
+  color: var(--color-background);
 }
-.header .nav .home, .header .nav-highlight .home {
+.header .nav p:first-child {
   float: left;
   font-size: 18px;
   font-weight: bolder;
@@ -57,10 +62,13 @@
 } */
 
 .header-button-selected-project {
-  color: var(--color-background);
-  background-color: lightgray;
+  color: var(--color-foreground);
   border-radius: 12px 12px 0 0;
   box-shadow: 0 -6px 10px -5px rgba(0, 0, 0, 0.2) inset;
+}
+.header-button-selected-project.highlight {
+  color: var(--color-background);
+  background-color: lightgray;
 }
 
 .header .nav-detail {
@@ -85,7 +93,6 @@
   /* border-bottom: 1px solid var(--color-background); */
   padding: 6px 0;
   width: 100%;
-  
 }
 .header .nav-detail.projects-divider {
   overflow-y: hidden;
