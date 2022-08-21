@@ -1,28 +1,15 @@
 :root {
-  --nav-height: 40px;
+  --nav-height: 40;
 }
 
 .header {
   background-color: var(--color-background);
   /* To displace proceeding elements after position-fixed header */
-  height: var(--nav-height);
+  height: calc(var(--nav-height) * 1px);
   overflow: hidden;
   width: 100%;
 }
 
-.header div {
-  -ms-overflow-style: none; /* for Internet Explorer, Edge */
-  scrollbar-width: none; /* for Firefox */
-
-  display: block;
-  height: var(--nav-height);
-  margin: 0;
-  overflow-x: auto;
-  padding: 0;
-  position: fixed;
-  white-space: nowrap;
-  width: 100%;
-}
 .header div::-webkit-scrollbar {
   display: none; /* for Chrome, Safari, and Opera */
 }
@@ -35,11 +22,20 @@
 }
 
 .header .nav {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+
   background-color: var(--color-background);
   color: var(--color-foreground);
+  display: block;
+  height: calc(var(--nav-height) * 1px);
   margin: 0;
+  overflow-x: auto;
   padding: 0;
-  z-index: 1;
+  position: fixed;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 2;
 }
 .header .nav p {
   border-radius: 12px 12px 0 0;
@@ -69,41 +65,6 @@
 .header-button-selected-project.highlight {
   color: var(--color-background);
   background-color: lightgray;
-}
-
-.header .nav-detail {
-  background-color: var(--color-foreground);
-  box-shadow: 0 8px 8px -2px rgba(0, 0, 0, 0.2);
-  color: var(--color-background);
-  height: 30px;
-  margin-top: var(--nav-height);
-  text-align: center;
-  z-index: 0;
-}
-
-.header .nav-detail.banner {
-  background-color: transparent;
-  box-shadow: none;
-  /* border-width: 0; */
-}
-.header .nav-detail.about {
-  font-weight: bold;
-}
-.header .nav-detail p {
-  /* border-bottom: 1px solid var(--color-background); */
-  padding: 6px 0;
-  width: 100%;
-}
-.header .nav-detail.projects-divider {
-  overflow-y: hidden;
-  height: 2px;
-}
-.header .nav-detail.projects {
-  overflow-y: hidden;
-  height: 2px;
-}
-.header .nav-detail.banner p {
-  border-width: 0;
 }
 
 #header-spacer-fixed-correction {

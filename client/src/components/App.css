@@ -21,7 +21,7 @@ body, html {
   background: fixed;
   background-image: linear-gradient(
     var(--color-foreground) 0,
-    var(--color-foreground) var(--header-height), 
+    var(--color-foreground) var(--header-height),
     var(--color-background)
   );
 }
