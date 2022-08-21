@@ -1,27 +1,26 @@
 :root {
-  --color-background:       rgb(44,54,64);
+  --color-background: rgb(44, 54, 64);
   --color-background-light: rgb(166, 178, 189);
-  --color-foreground:       rgb(255,255,255);
+  --color-foreground: rgb(255, 255, 255);
   /* 234,236,238 */
-  --color-text:             rgb(234,236,238);
-  --color-tonic:            rgb(0,102,153);
-  --color-mediant:          rgb(0,119,180);
-  --color-dominant:         rgb(51,153,204);
-  --color-accent:           rgb(255,204,51);
-  --color-accent-backup:    rgb(72,88,104);
+  --color-text: rgb(234, 236, 238);
+  --color-tonic: rgb(0, 102, 153);
+  --color-mediant: rgb(0, 119, 180);
+  --color-dominant: rgb(51, 153, 204);
+  --color-accent: rgb(255, 204, 51);
+  --color-accent-backup: rgb(72, 88, 104);
 
   --header-height: 68px;
 }
 
-body, html {
+body,
+html {
   background-color: var(--color-background);
 }
 
 #app {
   background: fixed;
-  background-image: linear-gradient(
-    var(--color-foreground) 0,
-    var(--color-foreground) var(--header-height),
-    var(--color-background)
-  );
+  background-image: linear-gradient(var(--color-foreground) 0,
+      var(--color-foreground) var(--header-height),
+      var(--color-background));
 }

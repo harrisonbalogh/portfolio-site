@@ -1,15 +1,15 @@
 .banner {
-    /* background: url("../../../images/profile_cover2@2x.jpg") no-repeat top center/cover; */
-/* background-attachment: fixed; */
-    /* box-shadow: 0 -30px 30px -30px rgba(0, 0, 0, 0.5) inset, 0 30px 30px -30px rgba(0, 0, 0, 0.5) inset; */
-/* background-color: lightgray; */
-    display: block;
-    /* background-image: linear-gradient(var(--color-foreground) , var(--color-background)); */
-    height: 370px;
-    padding: 0 20px;
-    text-align: center;
-    margin: 0 auto;
-    max-width: 390px;
+  /* background: url("../../../images/profile_cover2@2x.jpg") no-repeat top center/cover; */
+  /* background-attachment: fixed; */
+  /* box-shadow: 0 -30px 30px -30px rgba(0, 0, 0, 0.5) inset, 0 30px 30px -30px rgba(0, 0, 0, 0.5) inset; */
+  /* background-color: lightgray; */
+  display: block;
+  /* background-image: linear-gradient(var(--color-foreground) , var(--color-background)); */
+  height: 370px;
+  padding: 0 20px;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 390px;
 }
 
 #banner-title {
@@ -17,6 +17,7 @@
   align-items: flex-end;
   justify-content: center;
 }
+
 #banner-title h1 {
   flex: none;
   margin: 0;
@@ -25,6 +26,7 @@
   font-weight: normal;
   color: var(--color-background);
 }
+
 #banner-title p {
   flex: 1;
   margin: 3px 6px;
@@ -36,17 +38,18 @@
 }
 
 .banner .prefix {
-    text-align: right;
+  text-align: right;
 }
+
 .banner .suffix {
-    text-align: left;
+  text-align: left;
 }
 
 .banner .name {
-    border-top: 2px solid var(--color-background);
-    display: block;
-    font-size: 52px;
-    color: var(--color-background);
-    margin: 0 auto;
-    padding: 0;
+  border-top: 2px solid var(--color-background);
+  display: block;
+  font-size: 52px;
+  color: var(--color-background);
+  margin: 0 auto;
+  padding: 0;
 }

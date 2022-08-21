@@ -1,169 +1,176 @@
 .projects {
-    display: block;
-    margin: 0;
-    padding: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .projects .section-divider {
-    box-shadow: 0 -30px 30px -30px rgba(0, 0, 0, 0.5) inset;
-    display: block;
-    margin: 0;
-    padding: 0;
+  box-shadow: 0 -30px 30px -30px rgba(0, 0, 0, 0.5) inset;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
+
 .projects .section-divider p {
-    margin: 0 auto;
-    padding: 40px 0;
-    color: var(--color-background);
-    font-size: 28px;
-    font-weight: bold;
-    text-align: center;
+  margin: 0 auto;
+  padding: 40px 0;
+  color: var(--color-background);
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .projects .content {
-    background-color: var(--color-foreground);
-    display: block;
-    margin: 0;
-    padding: 0;
+  background-color: var(--color-foreground);
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .sticky-header-projects {
   display: none;
-	margin: 0;
-	padding: 6px 0 0 0;
-	text-align: center;
+  margin: 0;
+  padding: 6px 0 0 0;
+  text-align: center;
 }
+
 .sticky-header-projects p {
-	color: transparent;
-	font-size: 14px;
-	margin: 0;
-	padding: 0;
+  color: transparent;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
 }
 
 .projects ul {
-    text-align: center;
-    margin: 0;
-    padding: 20px 0;
+  text-align: center;
+  margin: 0;
+  padding: 20px 0;
 }
 
 .projects ul li {
-    box-shadow: 0 0 8px 0 lightgray;
-    border-radius: 12px;
-    cursor: pointer;
-    display: inline-block;
-    margin: 40px;
-    text-align: left;
-    vertical-align: top;
-    width: 300px;
+  box-shadow: 0 0 8px 0 lightgray;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 40px;
+  text-align: left;
+  vertical-align: top;
+  width: 300px;
 }
+
 .projects ul li .project-header {
-    background-color: var(--color-foreground);
-    border: 1px solid lightgray;
-    border-width: 1px 1px 0 1px;
-    /* border-radius: 12px 12px 0 0; */
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
+  background-color: var(--color-foreground);
+  border: 1px solid lightgray;
+  border-width: 1px 1px 0 1px;
+  /* border-radius: 12px 12px 0 0; */
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
 }
 
 .projects ul li .project-title {
-    /* color: white; */
-    display: inline-block;
-    font-weight: bolder;
-    font-size: 16px;
-    margin: 6px 0 8px 10px;
-    padding: 0;
+  /* color: white; */
+  display: inline-block;
+  font-weight: bolder;
+  font-size: 16px;
+  margin: 6px 0 8px 10px;
+  padding: 0;
 }
+
 .projects ul li .project-lang {
-    box-shadow: 3px -3px 6px 0 lightgray inset;
-    border: 0 solid lightgray;
-    border-width: 0;
-    border-radius: 0 0 0 8px;
-    /* color: gray; */
-    background-color: white;
-    float: right;
-    font-size: 11px;
-    margin: 0;
-    padding: 6px 6px 7px 7px;
+  box-shadow: 3px -3px 6px 0 lightgray inset;
+  border: 0 solid lightgray;
+  border-width: 0;
+  border-radius: 0 0 0 8px;
+  /* color: gray; */
+  background-color: white;
+  float: right;
+  font-size: 11px;
+  margin: 0;
+  padding: 6px 6px 7px 7px;
 }
 
 .projects ul li .project-content {
-    background: no-repeat center/cover;
-    background-clip: content-box;
-    border: 1px solid lightgray;
-    height: 290px;
-    margin: 0;
-    padding: 10px;
-    overflow: hidden;
-    position: relative;
+  background: no-repeat center/cover;
+  background-clip: content-box;
+  border: 1px solid lightgray;
+  height: 290px;
+  margin: 0;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
 }
 
 .projects ul li .project-description {
-    /* box-shadow: 0 5px 5px 5px rgba(255, 255, 255, 0.8); */
-    background-color: white;
-    border: 1px solid lightgray;
-    border-width: 0 1px 1px 1px;
-    font-size: 12px;
-    margin: 0;
-    padding: 10px 12px;
+  /* box-shadow: 0 5px 5px 5px rgba(255, 255, 255, 0.8); */
+  background-color: white;
+  border: 1px solid lightgray;
+  border-width: 0 1px 1px 1px;
+  font-size: 12px;
+  margin: 0;
+  padding: 10px 12px;
 }
 
 .projects ul li .project-arrow {
-    /* background: url('../../../images/arrow_r_shadow@2x.png') no-repeat 190px 98px/40px 40px; */
-    display: none;
-    background-color: rgba(255,255,255,0.7);
-    bottom: 0;
-    left: 0;
-    margin: 6px;
-    position: absolute;
-    right: 0;
-    text-align: center;
-    top: 0;
+  /* background: url('../../../images/arrow_r_shadow@2x.png') no-repeat 190px 98px/40px 40px; */
+  display: none;
+  background-color: rgba(255, 255, 255, 0.7);
+  bottom: 0;
+  left: 0;
+  margin: 6px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
 }
 
 .projects ul li .project-arrow p {
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-    margin: 100px 0;
-    text-shadow: 0 0 4px black;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 100px 0;
+  text-shadow: 0 0 4px black;
 }
 
 .projects ul li:hover {
-    box-shadow: 0 0 8px 0 lightgray inset;
-  }
+  box-shadow: 0 0 8px 0 lightgray inset;
+}
+
 .projects ul li:hover .project-description {
   box-shadow: 0 0 8px 0 lightgray inset;
 }
+
 .projects ul li:hover .project-header {
   box-shadow: 0 0 8px 0 lightgray inset;
 }
+
 .projects ul li:hover .project-arrow {
   display: block;
 }
 
 .project-selected {
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 .project-selected-frame {
-    background-color: var(--color-foreground);
-    margin: 0 auto;
-    padding: 10px 20px 20px 20px;
+  background-color: var(--color-foreground);
+  margin: 0 auto;
+  padding: 10px 20px 20px 20px;
 }
 
 .project-selected-markdown-container {
-    background-color: var(--color-foreground);
-    /* box-shadow: 0 0 8px 0px black; */
-    border-radius: 8px;
-    border: 1px solid lightgray;
-    height: 100%;
-    margin: 0 auto;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-width: 800px;
-    padding: 0;
+  background-color: var(--color-foreground);
+  /* box-shadow: 0 0 8px 0px black; */
+  border-radius: 8px;
+  border: 1px solid lightgray;
+  height: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-width: 800px;
+  padding: 0;
 }
 
 /* .project-selected-markdown-container p a {
@@ -171,22 +178,22 @@
 } */
 
 .project-selected-markdown {
-    color: var(--color-background);
-    margin: 0 auto;
-    padding: 10px;
-    padding-left: 25px;
-    text-align: left;
-    width: 100%;
+  color: var(--color-background);
+  margin: 0 auto;
+  padding: 10px;
+  padding-left: 25px;
+  text-align: left;
+  width: 100%;
 }
 
 .project-selected-iframe {
-    /* background-color: var(--color-background); */
-    border-width: 0;
-    /* border: 1px solid lightgray; */
-    box-shadow: 0 0 4px 0px gray;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-    width: 100%;
+  /* background-color: var(--color-background); */
+  border-width: 0;
+  /* border: 1px solid lightgray; */
+  box-shadow: 0 0 4px 0px gray;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
 }
