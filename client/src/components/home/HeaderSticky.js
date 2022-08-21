@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /** Sticky header HTML for each section */
-const STICKY_CONTENT = [
+let STICKY_CONTENT = [
   null,
   <p>Harrison Balogh</p>,
   null,
@@ -38,6 +38,8 @@ class HeaderSticky extends React.Component {
   render() {
     const { sectionIndex, displacement} = this.props;
     let stickyHeaderOffset = `${displacement}px`
+
+    STICKY_CONTENT[3] = this.props.selectedProjectStickyHeaderHtml
 
     return (
       <div ref={e => this.content = e}

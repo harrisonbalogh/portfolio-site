@@ -14,6 +14,8 @@ export default class Content extends React.Component {
         <Projects ref={element => this.projects = element}
           onProjectSelected={this.props.onProjectSelected}
           iProjectSelected={this.props.iProjectSelected}
+          selectedProjectStickyHeaderHtml={this.props.selectedProjectStickyHeaderHtml}
+          interactiveMode={this.props.interactiveMode}
         />
       </div>
     );

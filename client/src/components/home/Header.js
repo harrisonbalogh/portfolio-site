@@ -38,13 +38,17 @@ class Header extends React.Component {
   /** @param headerStickyHeight {integer} If provided, this value is used for the headerSticky height.  */
   computeDisplacement(headerStickyHeight = undefined) {
     let newState = {}
+    let pageHeight = Math.max( document.body.scrollHeight, document.body.offsetHeight,
+      document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight)
+    let scrollY = Math.min(window.scrollY, pageHeight - window.innerHeight)
 
     // Get currently focused section by compounding section heights. Retain its index
     let heightTotal = 0
     let iSection = 0
     for (let s = 0; s < this.props.sectionHeights.length; s++) {
+      let projectMod = s >= 2 ? 1 : 0
       heightTotal += this.props.sectionHeights[s]
-      if (window.scrollY < heightTotal) break
+      if (scrollY < heightTotal + projectMod) break
       iSection++
     }
 
@@ -53,6 +57,7 @@ class Header extends React.Component {
       newState.iFocusedSection = iSection
       // It takes a render frame for style to compute height
       newState.stickyHeight = UNKNOWN
+      this.scrollNav(iSection)
       return this.setState(newState)
     }
 
@@ -60,9 +65,9 @@ class Header extends React.Component {
     if (headerStickyHeight !== undefined) {
       newState.stickyHeight = this.headerSticky.content.clientHeight
     }
-    if (iSection !== this.props.sectionHeights.length - 1 && (heightTotal - stickyHeight) < window.scrollY) {
+    if (iSection !== this.props.sectionHeights.length - 1 && (heightTotal - stickyHeight) < scrollY) {
       // Displace sticky header with next section
-      newState.stickyHeaderDisplacement = NAV_HEIGHT - (window.scrollY - (heightTotal - stickyHeight))
+      newState.stickyHeaderDisplacement = NAV_HEIGHT - (scrollY - (heightTotal - stickyHeight))
     }
     else if (this.state.stickyHeaderDisplacement !== NAV_HEIGHT) {
       newState.stickyHeaderDisplacement = NAV_HEIGHT
@@ -71,15 +76,21 @@ class Header extends React.Component {
     this.setState(newState)
   }
 
-  handleNavSelection(section) {
+  scrollNav(iSection) {
+    let width = this.nav.children[Math.min(this.nav.children.length - 1, iSection)].offsetLeft
+    this.nav.scrollTo(width, 0)
+  }
+
+  handleNavSelection(iSection) {
     let heightTotal = 0;
-    if (section === 2) {
-      section = 3
+    if (iSection === 2) {
+      iSection = 3
       this.props.onProjectSelected(undefined);
     }
-    for (let s = 0; s < section; s++) {
+    for (let s = 0; s < iSection; s++) {
       heightTotal += this.props.sectionHeights[s]
     }
+    this.scrollNav(iSection)
     window.scrollTo(0, heightTotal)
   }
 
@@ -108,13 +119,14 @@ class Header extends React.Component {
 
     return (
       <div className="header">
-        <div className="nav">
+        <div className="nav" ref={e => this.nav = e}>
           {this.navButtons(iFocusedSection)}
-          {this.selectedProjectNavButton(iFocusedSection >= 3)}
+          {this.selectedProjectNavButton(iFocusedSection >= 2)}
         </div>
         <HeaderSticky ref={e => this.headerSticky = e}
           sectionIndex={iFocusedSection}
           displacement={stickyHeaderDisplacement}
+          selectedProjectStickyHeaderHtml={this.props.selectedProjectStickyHeaderHtml}
         />
         <div id="header-spacer-fixed-correction"></div>
       </div>

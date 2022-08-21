@@ -4,12 +4,14 @@ import projectData from '../../../project_markdown/info.json';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+import PropTypes from 'prop-types';
+
+const NAV_HEIGHT = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height'))
 
 class Projects extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      interactiveMode: false,
       windowHeight: window.innerHeight,
     }
   }
@@ -21,7 +23,7 @@ class Projects extends React.Component {
   }
 
   handleResize() {
-    let h = window.innerHeight - 40; // 40 is header height
+    let h = window.innerHeight - NAV_HEIGHT
     this.setState({windowHeight: h});
   }
 
@@ -29,19 +31,6 @@ class Projects extends React.Component {
     if (i >= projectData.projects.length) return
     window.scrollTo(0, this.content.offsetTop + this.divider.offsetHeight)
     this.props.onProjectSelected(i);
-    this.setState({interactiveMode: false})
-  }
-
-  handleBack() {
-    this.props.onProjectSelected(undefined);
-  }
-
-  getProjectIndexByName(name) {
-    return projectData.projects.findIndex(p => p.name === name)
-  }
-
-  handleInteractiveModeToggle() {
-    this.setState({interactiveMode: !this.state.interactiveMode})
   }
 
   projectListItem(i) {
@@ -59,11 +48,11 @@ class Projects extends React.Component {
           <p className='project-lang'>{project.lang || ''}</p>
         </div>
         <div className='project-content' style={{backgroundImage: `url(${backgroundImage})`}}>
-          <p className='project-description'>{(project.description || '').substring(0, 120) + "..."}</p>
           <div className='project-arrow'>
             <p>VIEW</p>
           </div>
         </div>
+        <p className='project-description'>{(project.description || '').substring(0, 120) + "..."}</p>
       </li>
     );
   }
@@ -79,42 +68,25 @@ class Projects extends React.Component {
   }
 
   projectSelectedContent() {
-    let { windowHeight, interactiveMode } = this.state;
-    let { iProjectSelected } = this.props;
+    let { windowHeight } = this.state;
+    let { iProjectSelected, interactiveMode } = this.props;
     let projects = projectData.projects;
     let projectSelected = iProjectSelected !== undefined ? projects[iProjectSelected] : undefined
     if (projectSelected === undefined) return null
 
-    let nextProject = projects[(iProjectSelected + 1) % projects.length]
     return (
       <div className='project-selected'>
-        <div className='project-selected-header'>
+        {this.props.selectedProjectStickyHeaderHtml}
 
-          <p onClick={()=>this.handleBack()} className='back'>Back to <b>Projects</b></p>
-
-          <p className='title'>{projectSelected.name}</p>
-
-          <div className='next-container' onClick={() => this.handleProjectSelected(this.getProjectIndexByName(nextProject.name))}>
-            <p className='next'>Next Project</p>
-            <p className='subtitle'>{nextProject.name}</p>
-          </div>
-
-        </div>
-
-        <a className='project-selected-link' href={projectSelected.link} target="_blank" rel="noopener noreferrer">{projectSelected.link || ''}</a>
-
-        {
-          projectSelected.interactive ?
-          <div onClick={()=>this.handleInteractiveModeToggle()} className='project-selected-mode-toggle'>
-            <p className={!interactiveMode ? '' : 'selected'}>Demo</p>
-            <p className={interactiveMode ? '' : 'selected'}>Description</p>
-          </div>
-          : null
-        }
         <div className='project-selected-frame'>
           {
             interactiveMode
-            ? <iframe title={projectSelected.name} src={`https://harrisonbalogh.com/projects/${projectSelected.name}`} className='project-selected-iframe' style={{height: `${windowHeight - 156}px`}}/>
+            ? <iframe
+                title={projectSelected.name}
+                src={`https://harrisonbalogh.com/projects/${projectSelected.name}`}
+                className='project-selected-iframe'
+                style={{height: `${windowHeight - 158}px`}}
+              />
             : <div className='project-selected-markdown-container'>
                 <ReactMarkdown className='project-selected-markdown'
                 components={{
@@ -147,6 +119,14 @@ class Projects extends React.Component {
       </div>
     );
   }
+}
+
+Projects.defaultProps = {
+  interactiveMode: false
+}
+
+Projects.propTypes = {
+  interactiveMode: PropTypes.bool
 }
 
 export default Projects;
