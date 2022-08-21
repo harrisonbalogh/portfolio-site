@@ -14,7 +14,7 @@
   z-index: 1;
 }
 
-.sticky-header > p {
+.sticky-header>p {
   padding: 6px 0;
   width: 100%;
 }
@@ -23,6 +23,7 @@
   font-weight: bold;
 
 }
+
 .sticky-header.hidden {
   background-color: transparent;
   box-shadow: none;
@@ -74,15 +75,18 @@
   text-align: right;
   width: 180px;
 }
+
 .project-selected-header .header-top-row .next {
   font-size: 18px;
   margin: 0;
   text-decoration: underline;
 }
+
 .project-selected-header .header-top-row .next-container .subtitle::selection,
 .project-selected-header .header-top-row .next::selection {
   background: none;
 }
+
 .project-selected-header .header-top-row .next-container .subtitle {
   font-size: 14px;
   font-weight: lighter;
@@ -100,6 +104,7 @@
   padding: 0;
   text-decoration: none;
 }
+
 .project-selected-header .project-link:hover {
   text-decoration: underline;
 }
@@ -113,6 +118,7 @@
   overflow: hidden;
   padding: 0;
 }
+
 .project-selected-header .mode-toggle p {
   border-radius: 4px;
   background-color: transparent;
@@ -124,13 +130,16 @@
   margin: 2px;
   padding: 0 4px;
 }
+
 .project-selected-header .mode-toggle::selection,
 .project-selected-header .mode-toggle p::selection {
   background: none;
 }
+
 .project-selected-header .mode-toggle p:first-child {
   margin: 2px 0 2px 2px;
 }
+
 .project-selected-header .mode-toggle p:hover {
   text-decoration: underline;
 }
@@ -141,6 +150,7 @@
   color: var(--color-background);
   cursor: default;
 }
+
 .project-selected-header .mode-toggle p.selected:hover {
   text-decoration: none;
 }
