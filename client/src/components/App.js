@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './home/Header';
 import Content from './home/Content';
+import { Outlet } from 'react-router-dom';
 import React from 'react';
 
 import projectData from '../project_markdown/info.json';
@@ -44,22 +45,22 @@ export default class App extends React.Component {
         <div className='header-top-row'>
           <p onClick={()=>this.handleBack()} className='back'>Back to <b>Projects</b></p>
           <p className='title'>{projectSelected.name}</p>
+          <p className='title-divider'> | </p>
+          <a className='project-link' href={projectSelected.link} target="_blank" rel="noopener noreferrer">{projectSelected.link || ''}</a>
           <div className='next-container' onClick={() => this.handleProjectSelected(this.getProjectIndexByName(nextProject.name))}>
             <p className='next'>Next Project</p>
-            <p className='subtitle'>{nextProject.name}</p>
+            {/* <p className='subtitle'>{nextProject.name}</p> */}
           </div>
         </div>
 
-        <a className='project-link' href={projectSelected.link} target="_blank" rel="noopener noreferrer">{projectSelected.link || ''}</a>
-
-        {
+        {/* {
           projectSelected.interactive ?
           <div onClick={()=>this.handleInteractiveModeToggle()} className='mode-toggle'>
             <p className={interactiveMode ? 'selected' : ''}>Demo</p>
             <p className={interactiveMode ? '' : 'selected'}>Description</p>
           </div>
           : null
-        }
+        } */}
       </div>
     )
   }
@@ -84,13 +85,7 @@ export default class App extends React.Component {
           iProjectSelected={this.state.iProjectSelected}
           selectedProjectStickyHeaderHtml={this.getProjectHeaderHtml()}
         />
-        <Content
-          ref={element => this.content = element}
-          onProjectSelected={this.handleProjectSelected}
-          iProjectSelected={this.state.iProjectSelected}
-          selectedProjectStickyHeaderHtml={this.getProjectHeaderHtml()}
-          interactiveMode={this.state.interactiveMode}
-        />
+        <Outlet />
       </div>
     );
   }

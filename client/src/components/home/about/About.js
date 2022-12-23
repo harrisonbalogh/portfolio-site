@@ -13,13 +13,13 @@ class About extends React.Component {
               <li className="github"><a href="https://github.com/harrisonbalogh" target=""><div></div></a></li>
               <li className="linkedin"><a href="https://www.linkedin.com/in/harrison-balogh-5907a8117/" target=""><div></div></a></li>
             </ul>
-            <p className="about--content-bio">
+            {/* <p className="about--content-bio">
               Software engineer (Ba.Sc) with industry experience developing and deploying full-stack web applications for medical
               applications. Big data ETL processing of large medical datasets. Developed for embedded systems in aviation industry
-              and university LIDAR research projects. Worked with numerous graphic libraries including: Swing, ThreeJS, SFML, Cocoa, Unity, 
+              and university LIDAR research projects. Worked with numerous graphic libraries including: Swing, ThreeJS, SFML, Cocoa, Unity,
               Unreal, Godot, SpriteKit. This website presents some of the many personal projects I've worked on over the years.
             </p>
-  
+
             <div className="about--navigator">
               <div id="about--navigator-line-left"></div>
               <ul id="about--navigator-icons">
@@ -29,7 +29,7 @@ class About extends React.Component {
               </ul>
               <div id="about--navigator-line-right"></div>
             </div>
-  
+
             <div className="about--content-section" id="about--content-section-lang">
               <div className="about--content-section-icon icon-lang"></div>
               <p className="about--content-section-title">Programming Languages</p>
@@ -63,7 +63,7 @@ class About extends React.Component {
                 <p className="about--content-section-lang-title">Rails</p>
               </li>
             </ul>
-  
+
             <div className="about--content-section" id="about--content-section-work">
               <div className="about--content-section-icon icon-work"></div>
               <p className="about--content-section-title">Developer Experience</p>
@@ -74,8 +74,8 @@ class About extends React.Component {
             </p>
             <p className="about-content-section-work-header"><b>Software Engineer II</b> - Cerner Corporation  <i>Mar. 2019 - Apr. 2022</i></p>
             <p className="about-content-section-work-description">
-              Contributed to large data processing ETL pipelines; high-traffic web-based medical applications including microservices in Java and 
-              Ruby on Rails with UI contributions built in React and proprietary in-house libraries; DevOps including deployments to live client zones, 
+              Contributed to large data processing ETL pipelines; high-traffic web-based medical applications including microservices in Java and
+              Ruby on Rails with UI contributions built in React and proprietary in-house libraries; DevOps including deployments to live client zones,
               performance monitoring, and support response to client and issue tracker reports.
             </p>
             <p className="about-content-section-work-header"><b>Software Intern</b> - Tatum Games, LLC  <i>Nov. 2018 - Feb. 2019</i></p>
@@ -97,7 +97,7 @@ class About extends React.Component {
               upkeep. Clients include Claudia-Rossini, Emilio-Verdugo-Architect, TheCarriageHouseLA,
               DirectHumanity, FusionDesignLA, Harxer (my portfolio site), et al.
             </p>
-  
+
             <div className="about--content-section" id="about--content-section-educ">
               <div className="about--content-section-icon icon-educ"></div>
               <p className="about--content-section-title">Education</p>
@@ -105,7 +105,7 @@ class About extends React.Component {
             <div className="about--content-section-educ">
               <p className="educ-title">Computer Sience (B.S.)</p>
               <p className="educ-sub">Cal State Long Beach, College of Engineering <i>2018</i></p>
-            </div>
+            </div> */}
           </div>
       </div>
     );

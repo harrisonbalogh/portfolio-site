@@ -1,0 +1,16 @@
+#not-found-page {
+  text-align: center;
+}
+
+#not-found-page h1 {
+  color: var(--color-background-light);
+  font-weight: bold;
+  font-size: 86px;
+  margin: 0;
+  padding: 0;
+}
+
+#not-found-subtitle {
+  margin: 0;
+  padding: 0;
+}

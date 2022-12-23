@@ -36,22 +36,32 @@
 }
 
 .project-selected-header .header-top-row {
-  display: flex;
-  align-items: flex-start;
+  /* display: flex;
+  align-items: flex-start; */
+  margin: 0;
+  padding: 0;
+  vertical-align: bottom;
+  text-align: center;
+}
+
+.project-selected-header .header-top-row p, .project-selected-header .header-top-row a {
+  display: inline-block;
   margin: 0;
   padding: 0;
 }
 
 .project-selected-header .header-top-row .back {
+  float: left;
   background: url('../../images/arrow_thin_l@2x.png') no-repeat left/10px 14px;
+  background-color: gray;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 14px;
   margin: 0;
-  padding: 0;
+  padding: 2px 7px;
   padding-left: 14px;
   text-decoration: underline;
   text-align: left;
-  width: 180px;
 }
 
 .project-selected-header .header-top-row .back b {
@@ -59,25 +69,43 @@
   padding: 0;
 }
 
+.project-selected-header .header-top-row p.back {
+  color: white;
+}
+
 .project-selected-header .header-top-row .title {
-  font-size: 26px;
-  margin: 0 auto;
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0;
   padding: 0;
+}
+.project-selected-header .header-top-row .title-divider {
+  font-size: 24px;
+  margin: 0 8px;
 }
 
 .project-selected-header .header-top-row .next-container {
   background: url('../../images/arrow_thin_r@2x.png') no-repeat right top 4px/10px 14px;
+  background-color: var(--color-background);
   cursor: pointer;
+  display: inline-block;
+  border-radius: 8px;
+  float: right;
   margin: 0;
-  overflow: hidden;
-  padding: 0;
+  /* overflow: hidden; */
+  padding: 2px 7px;
   padding-right: 14px;
-  text-align: right;
-  width: 180px;
+  /* text-align: right; */
+  /* width: 180px; */
+}
+
+.project-selected-header .header-top-row .next-container p {
+  color: white;
 }
 
 .project-selected-header .header-top-row .next {
-  font-size: 18px;
+  font-size: 14px;
   margin: 0;
   text-decoration: underline;
 }
@@ -97,7 +125,7 @@
 .project-selected-header .project-link:link,
 .project-selected-header .project-link:visited {
   color: gray;
-  display: block;
+  /* display: block; */
   font-size: 12px;
   font-weight: bold;
   margin: 0;

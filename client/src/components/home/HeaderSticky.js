@@ -19,9 +19,9 @@ const STICKY_CLASS_NAME = [
 ]
 
 class HeaderSticky extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   /** Get header sticky content by section index.
    * @param i {integer} Section index in STICKY_CONTENT

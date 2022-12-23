@@ -1,39 +1,46 @@
 import './projects.css'
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import projectData from '../../../project_markdown/info.json';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import PropTypes from 'prop-types';
+import { useNavigate } from "react-router-dom";
 
 const NAV_HEIGHT = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height'))
 
-class Projects extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      windowHeight: window.innerHeight,
-    }
-  }
+function Projects({
+  iProjectSelected,
+  interactiveMode,
+  selectedProjectStickyHeaderHtml,
+  onProjectSelected
+}) {
 
-  componentDidMount() {
-    window.addEventListener('resize', () => this.handleResize());
+  const navigate = useNavigate();
+
+  /* State Variables */
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+
+  /** componentDidMount() / componentDidUpdate() */
+  useEffect(() => {
+    window.addEventListener('resize', () => handleResize());
     // To pick up divider render height
-    this.handleResize()
-  }
+    handleResize()
+  })
 
-  handleResize() {
-    let h = window.innerHeight - NAV_HEIGHT
-    this.setState({windowHeight: h});
-  }
+  /** Update windowHeight state to current window height minus nav bar. */
+  const handleResize = _ => setWindowHeight(window.innerHeight - NAV_HEIGHT)
 
-  handleProjectSelected(i) {
+  function handleProjectSelected(i) {
     if (i >= projectData.projects.length) return
-    window.scrollTo(0, this.content.offsetTop + this.divider.offsetHeight)
-    this.props.onProjectSelected(i);
+    // window.scrollTo(0, this.content.offsetTop + this.divider.offsetHeight) // TODO
+    // onProjectSelected(i);
+    // TODO
+    // <Link to={`projects/1`}>Your Name</Link>
+    navigate(`/projects/${i}`, {replace: true})
   }
 
-  projectListItem(i) {
+  function projectListItem(i) {
     let project = projectData.projects[i]
     let backgroundImage = ''
     try {
@@ -42,7 +49,7 @@ class Projects extends React.Component {
     } catch(error) {}
 
     return (
-      <li key={project.name} onClick={() => this.handleProjectSelected(i)}>
+      <li key={i} onClick={() => handleProjectSelected(i)}>
         <div className='project-header'>
           <p className='project-title'>{project.name || ''}</p>
           <p className='project-lang'>{project.lang || ''}</p>
@@ -57,26 +64,23 @@ class Projects extends React.Component {
     );
   }
 
-  projectList() {
-    let { iProjectSelected } = this.props;
+  function projectList() {
     if (iProjectSelected !== undefined) return null
     return (
       <ul>
-        {projectData.projects.map((_, i) => this.projectListItem(i))}
+        {projectData.projects.map((_, i) => projectListItem(i))}
       </ul>
     )
   }
 
-  projectSelectedContent() {
-    let { windowHeight } = this.state;
-    let { iProjectSelected, interactiveMode } = this.props;
+  function projectSelectedContent() {
     let projects = projectData.projects;
     let projectSelected = iProjectSelected !== undefined ? projects[iProjectSelected] : undefined
     if (projectSelected === undefined) return null
 
     return (
       <div className='project-selected'>
-        {this.props.selectedProjectStickyHeaderHtml}
+        {selectedProjectStickyHeaderHtml}
 
         <div className='project-selected-frame'>
           {
@@ -101,24 +105,23 @@ class Projects extends React.Component {
     )
   }
 
-  render() {
-    return (
-      <div className="projects" ref={element => this.content = element}>
-        <div className="section-divider" ref={element => this.divider = element}>
-          <p>Projects</p>
-        </div>
-        <div className="content " style={{minHeight: `${this.state.windowHeight}px`}}>
-          {/* <div className='sticky-header-projects'>
-            <p><i>Select a project...</i></p>
-          </div> */}
-
-          {this.projectList()}
-
-          {this.projectSelectedContent()}
-        </div>
+  /** Render */
+  return (
+    <div className="projects">
+      <div className="section-divider">
+        {/* <p>Projects</p> */}
       </div>
-    );
-  }
+      <div className="content " style={{minHeight: `${windowHeight}px`}}>
+        {/* <div className='sticky-header-projects'>
+          <p><i>Select a project...</i></p>
+        </div> */}
+
+        {projectList()}
+
+        {projectSelectedContent()}
+      </div>
+    </div>
+  );
 }
 
 Projects.defaultProps = {
@@ -126,7 +129,8 @@ Projects.defaultProps = {
 }
 
 Projects.propTypes = {
-  interactiveMode: PropTypes.bool
+  interactiveMode: PropTypes.bool,
+  iProjectSelected: PropTypes.number
 }
 
 export default Projects;

@@ -18,6 +18,10 @@ html {
   background-color: var(--color-background);
 }
 
+p {
+  color: var(--color-text);
+}
+
 #app {
   background: fixed;
   background-image: linear-gradient(var(--color-foreground) 0,
