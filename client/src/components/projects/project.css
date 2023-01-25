@@ -1,0 +1,144 @@
+
+.project-container {
+  background-color: var(--color-foreground);
+  margin: 0;
+  padding: calc(var(--header-height) * 1px) 0 0 0;
+  text-align: center;
+}
+
+.project-container .title {
+  color: var(--color-background);
+  font-size: 18px;
+  font-weight: bold;
+  margin: 14px 0 0px 0;
+  padding: 0;
+}
+
+.project-container .git-link {
+  color: var(--color-background);
+  font-size: 12px;
+}
+
+.project-container .next-container {
+  background: url('../../images/arrow_thin_r@2x.png') no-repeat right top 16px/10px 14px;
+  /* background-color: var(--color-background); */
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 8px;
+  margin: 8px;
+  padding: 7px;
+  padding-right: 14px;
+  position: absolute;
+  right: 10px;
+  text-align: right;
+  top: calc((var(--header-height)) * 1px);
+}
+
+.project-container .next-container:hover {
+  background-color: var(--color-accent);
+}
+
+.project-container .next-container p {
+  color: var(--color-background);
+  margin: 0;
+  padding: 0;
+}
+
+.project-container .next-container .next {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  text-decoration: underline;
+}
+
+.project-container .next-container .subtitle {
+  font-size: 14px;
+  font-weight: lighter;
+  margin: 0;
+  line-height: 12px;
+}
+
+.project-container .interactive-container {
+  background-color: var(--color-background);
+  box-shadow: 0 8px 6px -6px black inset, 0 -8px 6px -6px black inset;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.project-container .interactive-container .interactive-iframe {
+  border-width: 0;
+  box-shadow: 0 0 8px 2px black;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+
+.project-container .interactive-container .load-demo-container {
+  background-color: var(--color-foreground);
+  box-shadow: 0 0 8px 2px black;
+  height: 100%;
+  margin: 0 auto;
+  /* max-width: 800px; */
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.project-container .interactive-container .load-demo-container .placeholder-demo-image {
+  background: repeat center;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+
+  /* Add blur effect */
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+}
+
+.project-container .interactive-container .load-demo-container>p {
+  background-color: var(--color-foreground);
+  border-radius: 8px;
+  border: 2px solid var(--color-background);
+  box-shadow: 0 0 8px 0px black;
+  color: var(--color-background);
+  cursor: pointer;
+  font-weight: bold;
+  left: calc(50% - 50px);
+  margin: 0;
+  padding: 4px 10px;
+  position: absolute;
+  top: calc(50% - 14px);
+}
+.project-container .interactive-container .load-demo-container>p:hover {
+  background-color: var(--color-background);
+  color: var(--color-accent);
+}
+
+.project-container .markdown-container {
+  background-color: var(--color-foreground);
+  border-radius: 8px;
+  border: 1px solid lightgray;
+  height: 100%;
+  margin: 40px auto 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-width: 800px;
+}
+
+.project-container .markdown-container .markdown {
+  color: var(--color-background);
+  margin: 0 auto;
+  padding: 10px;
+  padding-left: 25px;
+  text-align: left;
+  width: 100%;
+}
+
+.project-container .markdown-container .markdown p {
+  color: var(--color-background);
+}

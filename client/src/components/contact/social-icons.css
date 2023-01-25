@@ -1,0 +1,39 @@
+.container-social-icons a {
+  margin: 0;
+  padding: 0;
+
+}
+
+.container-social-icons a div {
+  cursor: pointer;
+  display: inline-block;
+  height: 26px;
+  margin: 0;
+  padding: 0;
+  width: 26px;
+}
+
+.container-social-icons .github {
+  background: url("../../images/icon_github@2x.png") no-repeat center/cover;
+  margin-right: 6px;
+}
+
+.container-social-icons .github.inv {
+  background: url("../../images/icon_github_inv@2x.png") no-repeat center/cover;
+}
+
+.container-social-icons .github:hover {
+  background: url("../../images/icon_github_alt@2x.png") no-repeat center/cover;
+}
+
+.container-social-icons .linkedin {
+  background: url("../../images/icon_linkedin@2x.png") no-repeat center/cover;
+}
+
+.container-social-icons .linkedin.inv {
+  background: url("../../images/icon_linkedin_inv@2x.png") no-repeat center/cover;
+}
+
+.container-social-icons .linkedin:hover {
+  background: url("../../images/icon_linkedin_alt@2x.png") no-repeat center/cover;
+}
