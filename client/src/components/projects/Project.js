@@ -51,7 +51,7 @@ function Project() {
         <iframe
           className='interactive-iframe'
           title={projectData.name}
-          src={`https://harrisonbalogh.com/projects/${projectData.name}`}
+          src={`https://harrisonbalogh.com/demo/${projectData.name}`}
           style={{height: `${windowHeight - 84 - windowHeight/6}px`}}
         />
       )
