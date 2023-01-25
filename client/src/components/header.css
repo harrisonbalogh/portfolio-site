@@ -1,0 +1,125 @@
+:root {
+  --header-height: 40;
+}
+
+.header {
+  /* for Internet Explorer, Edge */
+  -ms-overflow-style: none;
+  /* for Firefox */
+  scrollbar-width: none;
+
+  /* variables */
+  --nav-border-bottom: 2;
+
+  background-color: var(--color-background);
+  border: 2px solid var(--color-accent);
+  border-width: 0 0 calc(var(--nav-border-bottom) * 1px) 0;
+  color: var(--color-foreground);
+  height: calc(var(--header-height) * 1px);
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  position: fixed;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 2;
+
+  /* animation */
+  transition: transform 0.1s linear 0.1s;
+  transform: translateY(calc(var(--header-height) * -1px - var(--nav-border-bottom) * 1px));
+}
+.header.visible {
+  /* animation */
+  transition: transform 0.1s linear;
+  transform: translateY(0);
+}
+
+.header::-webkit-scrollbar {
+  /* for Chrome, Safari, and Opera */
+  display: none;
+}
+
+.header .container-home {
+  /* variables */
+  --header-overflow: 12;
+  --width: 36;
+
+  background-color: var(--color-accent);
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  vertical-align: top;
+  width: calc(var(--width) * 1px);
+  height: calc(100% + var(--header-overflow) * 1px);
+
+  /* notch corner */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--header-overflow) * 1px),
+    70% 100%,
+    0 100%,
+    0 0
+  );
+
+  /* animation */
+  transition: transform 0.1s linear;
+  transform: translateX(calc(var(--width) * -1px));
+}
+.header .container-home.visible {
+  /* animation */
+  transition: transform 0.1s linear 0.1s;
+  transform: translateX(0);
+}
+
+.header p {
+  display: inline-block;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+
+  border-radius: 12px 12px 0 0;
+  border-top: 1px solid var(--color-background);
+  padding: 11px 40px;
+}
+
+.header p:first-child {
+  float: left;
+  font-size: 18px;
+  font-weight: bolder;
+  padding: 9px 10px;
+
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+}
+
+.header .icon-home {
+  background: url("../images/icon-home.svg") no-repeat center/cover;
+  display: inline-block;
+  border-radius: 50%;
+  height: 24px;
+  margin: 8px 0 0 -2px;
+  padding: 0;
+  width: 24px;
+
+  /* animation */
+  transition: transform 0.1s linear;
+  transform: scale(1);
+}
+
+.header .container-home:hover .icon-home {
+  /* animation */
+  transform: scale(1.2);
+}
+
+/* .header p:hover, .header-highlight p:hover {
+
+} */
+
+.header .name {
+  font-size: 16px;
+  color: var(--color-foreground);
+  padding: 7px 14px;
+}

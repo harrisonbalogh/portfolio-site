@@ -6,9 +6,9 @@ import {
 } from 'react-router-dom';
 import './stylesheets/index.css';
 import App from './components/App';
-import Projects from './components/home/projects/Projects';
-import Project from './components/home/projects/Project';
-import Content from './components/home/Content';
+import Projects from './components/projects/Projects';
+import Project from './components/projects/Project';
+import Home from './components/home/Home';
 import reportWebVitals from './javascript/reportWebVitals';
 import NotFoundPage from "./components/NotFoundPage";
 
@@ -20,22 +20,18 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Content />,
+        element: <Home />,
       },
       {
         path: "projects",
         element: <Projects />,
       },
       {
-        path: "projects/:projectId",
+        path: "projects/:projectName",
         element: <Project />,
       }
     ],
-  },
-  {
-    path: "contacts/:contactId",
-    element: <Projects />,
-  },
+  }
 ]);
 
 ReactDOM.render(

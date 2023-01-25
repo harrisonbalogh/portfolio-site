@@ -1,6 +1,11 @@
+:root {
+  --footer-height: 30;
+}
+
 .footer {
+  background-color: var(--color-background);
   display: block;
-  height: 30px;
+  height: calc(var(--footer-height) * 1px);
 }
 
 .footer p {
@@ -13,9 +18,13 @@
 }
 
 .footer .back-to-top {
+  cursor: pointer;
   float: initial;
-  padding: 6px 0 0 20px;
   font-size: 14px;
   font-weight: bold;
+  padding: 6px 0 0 20px;
   width: 200px;
+}
+.footer .back-to-top:hover {
+  color: var(--color-accent);
 }

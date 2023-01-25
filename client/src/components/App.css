@@ -9,8 +9,6 @@
   --color-dominant: rgb(51, 153, 204);
   --color-accent: rgb(255, 204, 51);
   --color-accent-backup: rgb(72, 88, 104);
-
-  --header-height: 68px;
 }
 
 body,
@@ -24,7 +22,9 @@ p {
 
 #app {
   background: fixed;
-  background-image: linear-gradient(var(--color-foreground) 0,
-      var(--color-foreground) var(--header-height),
-      var(--color-background));
+  background-image: linear-gradient(
+    var(--color-foreground) 0,
+    var(--color-foreground) calc(var(--header-height) * 1px),
+    var(--color-background)
+  );
 }
